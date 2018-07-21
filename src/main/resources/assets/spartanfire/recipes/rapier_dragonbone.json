@@ -1,0 +1,1 @@
+{"pattern": ["  i", "ii ", "hi "], "conditions": [{"ore_dict": "ingotDragonbone", "type": "ore_dict_exists"}], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:rapier_dragonbone"}, "key": {"i": {"ore": "ingotDragonbone", "type": "forge:ore_dict"}, "h": {"item": "spartanweaponry:material", "data": 0}}}

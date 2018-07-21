@@ -1,0 +1,1 @@
+{"pattern": [" i", "ip", "i "], "conditions": [{"ore_dict": "ingotDragonbone", "type": "ore_dict_exists"}], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:halberd_dragonbone"}, "key": {"i": {"ore": "ingotDragonbone", "type": "forge:ore_dict"}, "p": {"item": "spartanweaponry:material", "data": 1}}}
