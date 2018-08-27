@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " ii",
+    " si",
+    "h  "
+  ],
+  "key": {
+    "i": {
+      "type": "forge:ore_dict",
+      "ore": "ingotDragonbone"
+    },
+    "h": {
+      "item": "spartanweaponry:material",
+      "data": 0
+    },
+    "s": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    }
+  },
+  "result": {
+    "item": "spartanfire:mace_dragonbone"
+  },
+  "conditions": [
+    {
+      "type": "item_exists",
+      "item": "spartanfire:mace_dragonbone"
+    }
+  ]
+}

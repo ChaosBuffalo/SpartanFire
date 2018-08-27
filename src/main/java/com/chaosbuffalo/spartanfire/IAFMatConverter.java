@@ -1,7 +1,6 @@
 package com.chaosbuffalo.spartanfire;
 
-import com.oblivioussp.spartanweaponry.util.ToolMaterialEx;
-
+import com.oblivioussp.spartanweaponry.api.ToolMaterialEx;
 
 /**
  * Created by Jacob on 7/20/2018.

@@ -1,0 +1,42 @@
+{
+  "parent": "spartanweaponry:item/crossbow_wood",
+  "textures": {
+    "layer0":"spartanfire:items/crossbow_dragon_standby"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "pulling": 1
+      },
+      "model": "spartanfire:item/crossbow_dragonbone_pulling_0"
+    },
+    {
+      "predicate": {
+        "pulling": 1,
+        "pull": 0.65
+      },
+      "model": "spartanfire:item/crossbow_dragonbone_pulling_1"
+    },
+    {
+      "predicate": {
+        "pulling": 1,
+        "pull": 0.9
+      },
+      "model": "spartanfire:item/crossbow_dragonbone_pulling_2"
+    },
+    {
+      "predicate": {
+        "pulling": 0,
+        "pull": 1.0
+      },
+      "model": "spartanfire:item/crossbow_dragonbone_loaded"
+    },
+    {
+      "predicate": {
+        "pulling": 1,
+        "pull": 1.0
+      },
+      "model": "spartanfire:item/crossbow_dragonbone_firing"
+    }
+  ]
+}

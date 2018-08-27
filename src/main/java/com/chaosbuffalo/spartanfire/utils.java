@@ -1,6 +1,6 @@
 package com.chaosbuffalo.spartanfire;
 
-import com.oblivioussp.spartanweaponry.util.ToolMaterialEx;
+import com.oblivioussp.spartanweaponry.api.ToolMaterialEx;
 import net.minecraft.item.Item;
 import org.apache.commons.lang3.StringUtils;
 

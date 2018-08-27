@@ -4,15 +4,15 @@ import com.chaosbuffalo.spartanfire.IAFMatConverter;
 import com.chaosbuffalo.spartanfire.SpartanFire;
 import com.chaosbuffalo.spartanfire.utils;
 import com.github.alexthe666.iceandfire.core.ModItems;
+import com.oblivioussp.spartanweaponry.api.DamageHelper;
+import com.oblivioussp.spartanweaponry.api.SpartanWeaponryAPI;
 import com.oblivioussp.spartanweaponry.client.gui.CreativeTabsSW;
-import com.oblivioussp.spartanweaponry.init.ModelRenderRegistry;
-import com.oblivioussp.spartanweaponry.item.*;
-import com.oblivioussp.spartanweaponry.util.DamageHelper;
-import com.oblivioussp.spartanweaponry.util.ToolMaterialEx;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.oredict.OreDictionary;
+
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,74 +32,193 @@ public class ItemRegistrySFire {
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> ev) {
+        // Don't know why this was left out from ice and fire
+        OreDictionary.registerOre("ingotDragonbone", ModItems.dragonbone);
         Set<Item> item_set = new HashSet<>();
         for (IAFMatConverter mat : MATERIALS_TO_REGISTER){
-            ItemKatana katana = new ItemKatana("katana_" + mat.name, SpartanFire.MODID, mat.material,
-                    DamageHelper.getDamage(DamageHelper.WeaponType.KATANA, mat.material.getMaterial().getAttackDamage()));
-            ModelRenderRegistry.addItemToRegistry(katana, mat.material, "katana_custom");
+            Item katana = SpartanWeaponryAPI.createKatana(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.KATANA,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+                    );
+            ModelRenderRegistrySFire.addItemToRegistry(katana, "katana_" + mat.material.getUnlocName());
             item_set.add(katana);
-            ItemGreatsword greatsword = new ItemGreatsword("greatsword_" + mat.name, SpartanFire.MODID, mat.material,
-                    DamageHelper.getDamage(DamageHelper.WeaponType.GREATSWORD, mat.material.getMaterial().getAttackDamage()));
-            ModelRenderRegistry.addItemToRegistry(greatsword, mat.material, "greatsword_custom");
+            Item greatsword = SpartanWeaponryAPI.createGreatsword(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.GREATSWORD,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(greatsword, "greatsword_" + mat.material.getUnlocName());
             item_set.add(greatsword);
-            ItemLongsword longsword = new ItemLongsword("longsword_" + mat.name, SpartanFire.MODID, mat.material,
-                    DamageHelper.getDamage(DamageHelper.WeaponType.LONGSWORD, mat.material.getMaterial().getAttackDamage()));
-            ModelRenderRegistry.addItemToRegistry(longsword, mat.material, "longsword_custom");
+            Item longsword = SpartanWeaponryAPI.createLongsword(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.LONGSWORD,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(longsword, "longsword_" + mat.material.getUnlocName());
             item_set.add(longsword);
-            ItemSaber saber = new ItemSaber("saber_" + mat.name, SpartanFire.MODID, mat.material,
-                    DamageHelper.getDamage(DamageHelper.WeaponType.SABER, mat.material.getMaterial().getAttackDamage()));
-            ModelRenderRegistry.addItemToRegistry(saber, mat.material, "saber_custom");
+            Item saber = SpartanWeaponryAPI.createSaber(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.SABER,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(saber, "saber_" + mat.material.getUnlocName());
             item_set.add(saber);
-            ItemRapier rapier = new ItemRapier("rapier_" + mat.name, SpartanFire.MODID, mat.material,
-                    DamageHelper.getDamage(DamageHelper.WeaponType.RAPIER, mat.material.getMaterial().getAttackDamage()));
-            ModelRenderRegistry.addItemToRegistry(rapier, mat.material, "rapier_custom");
+            Item rapier = SpartanWeaponryAPI.createRapier(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.RAPIER,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(rapier, "rapier_" + mat.material.getUnlocName());
             item_set.add(rapier);
-            ItemDagger dagger = new ItemDagger("dagger_" + mat.name, SpartanFire.MODID, mat.material,
-                    DamageHelper.getDamage(DamageHelper.WeaponType.DAGGER, mat.material.getMaterial().getAttackDamage()));
-            ModelRenderRegistry.addItemToRegistry(dagger, mat.material, "dagger_custom");
+            Item dagger = SpartanWeaponryAPI.createDagger(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.DAGGER,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(dagger,"dagger_" + mat.material.getUnlocName());
             item_set.add(dagger);
-            ItemSpear spear = new ItemSpear("spear_" + mat.name, SpartanFire.MODID, mat.material,
-                    DamageHelper.getDamage(DamageHelper.WeaponType.SPEAR, mat.material.getMaterial().getAttackDamage()));
-            ModelRenderRegistry.addItemToRegistry(spear, mat.material, "spear_custom");
+            Item spear = SpartanWeaponryAPI.createSpear(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.SPEAR,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(spear,"spear_" + mat.material.getUnlocName());
             item_set.add(spear);
-            ItemPike pike = new ItemPike("pike_" + mat.name, SpartanFire.MODID, mat.material,
-                    DamageHelper.getDamage(DamageHelper.WeaponType.PIKE, mat.material.getMaterial().getAttackDamage()));
-            ModelRenderRegistry.addItemToRegistry(pike, mat.material, "pike_custom");
+            Item pike = SpartanWeaponryAPI.createPike(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.PIKE,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(pike, "pike_" + mat.material.getUnlocName());
             item_set.add(pike);
-            ItemLance lance = new ItemLance("lance_" + mat.name, SpartanFire.MODID, mat.material,
-                    DamageHelper.getDamage(DamageHelper.WeaponType.LANCE, mat.material.getMaterial().getAttackDamage()));
-            ModelRenderRegistry.addItemToRegistry(lance, mat.material, "lance_custom");
+            Item lance = SpartanWeaponryAPI.createLance(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.LANCE,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(lance, "lance_" + mat.material.getUnlocName());
             item_set.add(lance);
-            ItemHalberd halberd = new ItemHalberd("halberd_" + mat.name, SpartanFire.MODID, mat.material,
-                    DamageHelper.getDamage(DamageHelper.WeaponType.HALBERD, mat.material.getMaterial().getAttackDamage()));
-            ModelRenderRegistry.addItemToRegistry(halberd, mat.material, "halberd_custom");
+            Item halberd = SpartanWeaponryAPI.createHalberd(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.HALBERD,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(halberd, "halberd_" + mat.material.getUnlocName());
             item_set.add(halberd);
-            ItemWarhammer warhammer = new ItemWarhammer("warhammer_" + mat.name, SpartanFire.MODID, mat.material,
-                    DamageHelper.getDamage(DamageHelper.WeaponType.WARHAMMER, mat.material.getMaterial().getAttackDamage()));
-            ModelRenderRegistry.addItemToRegistry(warhammer, mat.material, "warhammer_custom");
+            Item warhammer = SpartanWeaponryAPI.createWarhammer(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.WARHAMMER,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(warhammer, "warhammer_" + mat.material.getUnlocName());
             item_set.add(warhammer);
-            ItemHammer hammer = new ItemHammer("hammer_" + mat.name, SpartanFire.MODID, mat.material,
-                    DamageHelper.getDamage(DamageHelper.WeaponType.HAMMER, mat.material.getMaterial().getAttackDamage()));
-            ModelRenderRegistry.addItemToRegistry(hammer, mat.material, "hammer_custom");
+            Item hammer = SpartanWeaponryAPI.createHammer(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.HAMMER,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(hammer,"hammer_" + mat.material.getUnlocName());
             item_set.add(hammer);
-            ItemThrowingAxe throwing_axe = new ItemThrowingAxe("throwing_axe_" + mat.name, SpartanFire.MODID, mat.material,
-                    DamageHelper.getDamage(DamageHelper.WeaponType.THROWING_AXE, mat.material.getMaterial().getAttackDamage()));
-            ModelRenderRegistry.addItemToRegistry(throwing_axe, mat.material, "throwing_axe_custom");
+            Item throwing_axe = SpartanWeaponryAPI.createThrowingAxe(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.THROWING_AXE,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(throwing_axe,
+                    "throwing_axe_" + mat.material.getUnlocName());
             item_set.add(throwing_axe);
-            ItemThrowingKnife throwing_knife = new ItemThrowingKnife("throwing_knife_" + mat.name, SpartanFire.MODID, mat.material,
-                    DamageHelper.getDamage(DamageHelper.WeaponType.THROWING_KNIFE, mat.material.getMaterial().getAttackDamage()));
-            ModelRenderRegistry.addItemToRegistry(throwing_knife, mat.material, "throwing_knife_custom");
+            Item throwing_knife = SpartanWeaponryAPI.createThrowingKnife(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.THROWING_KNIFE,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(throwing_knife,
+                    "throwing_knife_" + mat.material.getUnlocName());
             item_set.add(throwing_knife);
-            ItemLongbow longbow = new ItemLongbow("longbow_" + mat.name, SpartanFire.MODID, mat.material);
-            ModelRenderRegistry.addItemToRegistry(longbow, mat.material, "longbow_custom");
+            Item longbow = SpartanWeaponryAPI.createLongbow(
+                    mat.material,
+                    SpartanFire.MODID,
+                    CreativeTabsSW.TAB_SW,
+                    null
+            );
+
+            ModelRenderRegistrySFire.addItemToRegistry(longbow, "longbow_" + mat.material.getUnlocName());
             item_set.add(longbow);
-            ItemCrossbow crossbow = new ItemCrossbow("crossbow_" + mat.name, SpartanFire.MODID, mat.material);
-            ModelRenderRegistry.addItemToRegistry(crossbow, mat.material, "crossbow_custom");
+            Item crossbow = SpartanWeaponryAPI.createCrossbow(
+                    mat.material,
+                    SpartanFire.MODID,
+                    CreativeTabsSW.TAB_SW,
+                    null
+            );
+
+            ModelRenderRegistrySFire.addItemToRegistry(crossbow,"crossbow_" + mat.material.getUnlocName());
             item_set.add(crossbow);
-            ItemJavelin javelin = new ItemJavelin("javelin_" + mat.name, SpartanFire.MODID, mat.material,
-                    DamageHelper.getDamage(DamageHelper.WeaponType.JAVELIN, mat.material.getMaterial().getAttackDamage()));
-            ModelRenderRegistry.addItemToRegistry(javelin, mat.material, "javelin_custom");
+            Item javelin = SpartanWeaponryAPI.createJavelin(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.JAVELIN,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(javelin,"javelin_" + mat.material.getUnlocName());
             item_set.add(javelin);
+            Item battleaxe = SpartanWeaponryAPI.createBattleaxe(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.BATTLEAXE,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(battleaxe, "battleaxe_" + mat.material.getUnlocName());
+            item_set.add(battleaxe);
+            Item mace = SpartanWeaponryAPI.createMace(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.MACE,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(mace, "mace_" + mat.material.getUnlocName());
+            item_set.add(mace);
+            Item boomerang = SpartanWeaponryAPI.createBoomerang(
+                    mat.material,
+                    SpartanFire.MODID,
+                    DamageHelper.getDamage(DamageHelper.WeaponType.BOOMERANG,
+                            mat.material.getMaterial().getAttackDamage()),
+                    CreativeTabsSW.TAB_SW
+            );
+            ModelRenderRegistrySFire.addItemToRegistry(boomerang,
+                    "boomerang_" + mat.material.getUnlocName());
+            item_set.add(boomerang);
 
         }
         for (Item it : item_set){

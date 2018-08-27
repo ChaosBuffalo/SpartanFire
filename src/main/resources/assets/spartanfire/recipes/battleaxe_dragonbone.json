@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iii",
+    "isi",
+    " h "
+  ],
+  "key": {
+    "i": {
+      "type": "forge:ore_dict",
+      "ore": "ingotDragonbone"
+    },
+    "h": {
+      "item": "spartanweaponry:material",
+      "data": 0
+    },
+    "s": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    }
+  },
+  "result": {
+    "item": "spartanfire:battleaxe_dragonbone"
+  }
+}
