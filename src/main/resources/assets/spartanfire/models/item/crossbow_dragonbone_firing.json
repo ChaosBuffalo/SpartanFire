@@ -1,6 +1,1 @@
-{
-    "parent": "spartanweaponry:item/crossbow_wood_pulling_0",
-    "textures": {
-        "layer0":"spartanfire:items/crossbow_dragon_loaded"
-    }
-}
+{"textures": {"layer0": "spartanfire:items/crossbow_dragon_loaded"}, "parent": "spartanweaponry:item/crossbow_wood_pulling_0"}

@@ -1,6 +1,1 @@
-{
-  "parent":"spartanweaponry:item/boomerang_wood",
-  "textures": {
-    "layer0":"spartanfire:items/boomerang_dragon"
-  }
-}
+{"textures": {"layer0": "spartanfire:items/boomerang_dragon"}, "parent": "spartanweaponry:item/boomerang_wood"}
