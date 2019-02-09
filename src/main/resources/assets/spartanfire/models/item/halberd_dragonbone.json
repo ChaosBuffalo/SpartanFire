@@ -1,6 +1,1 @@
-{
-  "parent":"spartanweaponry:item/halberd_wood",
-  "textures": {
-    "layer0":"spartanfire:items/halberd_dragon"
-  }
-}
+{"textures": {"layer0": "spartanfire:items/halberd_dragon"}, "parent": "spartanweaponry:item/halberd_wood"}

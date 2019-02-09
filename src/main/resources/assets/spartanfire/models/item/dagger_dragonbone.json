@@ -1,6 +1,1 @@
-{
-  "parent":"spartanweaponry:item/dagger_wood",
-  "textures": {
-    "layer0":"spartanfire:items/dagger_dragon"
-  }
-}
+{"textures": {"layer0": "spartanfire:items/dagger_dragon"}, "parent": "spartanweaponry:item/dagger_wood"}

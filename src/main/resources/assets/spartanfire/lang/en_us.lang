@@ -18,9 +18,13 @@ item.spartanfire:crossbow_custom.name=%s-Strengthened Crossbow
 item.spartanfire:throwing_knife_custom.name=%s Throwing Knife
 item.spartanfire:throwing_axe_custom.name=%s Throwing Axe
 item.spartanfire:javelin_custom.name=%s Javelin
+tooltip.spartanfire:fire_dragonbone=Ignites and knocks back targets.
+tooltip.spartanfire:ice_dragonbone=Slows and knocks back targets.
 
 #Materials
 material.spartanfire:dragonbone=Dragonbone
+material.spartanfire:fire_dragonbone=Flamed Dragonbone
+material.spartanfire:ice_dragonbone=Iced Dragonbone
 
 
 

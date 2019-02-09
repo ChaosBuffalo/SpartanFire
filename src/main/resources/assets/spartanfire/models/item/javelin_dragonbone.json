@@ -1,6 +1,1 @@
-{
-  "parent":"spartanweaponry:item/javelin_wood",
-  "textures": {
-    "layer0":"spartanfire:items/javelin_dragon"
-  }
-}
+{"textures": {"layer0": "spartanfire:items/javelin_dragon"}, "parent": "spartanweaponry:item/javelin_wood"}

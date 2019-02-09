@@ -1,6 +1,1 @@
-{
-  "parent":"spartanweaponry:item/hammer_wood",
-  "textures": {
-    "layer0":"spartanfire:items/hammer_dragon"
-  }
-}
+{"textures": {"layer0": "spartanfire:items/hammer_dragon"}, "parent": "spartanweaponry:item/hammer_wood"}
