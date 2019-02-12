@@ -221,7 +221,7 @@ public class ItemRegistrySFire {
                         "throwing_knife_" + mat.material.getUnlocName());
                 item_set.add(throwing_knife);
             }
-            if (!ConfigHandler.disableLongbow || ConfigHandler.woodenLongbowOnly) {
+            if (!ConfigHandler.disableLongbow || !ConfigHandler.woodenLongbowOnly) {
                 Item longbow = SpartanWeaponryAPI.createLongbow(
                         mat.material,
                         SpartanFire.MODID,
@@ -232,7 +232,7 @@ public class ItemRegistrySFire {
                 ModelRenderRegistrySFire.addItemToRegistry(longbow, "longbow_" + mat.material.getUnlocName());
                 item_set.add(longbow);
             }
-            if (!ConfigHandler.disableCrossbow || ConfigHandler.woodenCrossbowOnly) {
+            if (!ConfigHandler.disableCrossbow || !ConfigHandler.woodenCrossbowOnly) {
                 Item crossbow = SpartanWeaponryAPI.createCrossbow(
                         mat.material,
                         SpartanFire.MODID,
@@ -267,7 +267,7 @@ public class ItemRegistrySFire {
                 ModelRenderRegistrySFire.addItemToRegistry(battleaxe, "battleaxe_" + mat.material.getUnlocName());
                 item_set.add(battleaxe);
             }
-            if (!ConfigHandler.disableBoomerang || ConfigHandler.woodenBoomerangOnly) {
+            if (!ConfigHandler.disableBoomerang || !ConfigHandler.woodenBoomerangOnly) {
                 Item boomerang = SpartanWeaponryAPI.createBoomerang(
                         mat.material,
                         SpartanFire.MODID,
