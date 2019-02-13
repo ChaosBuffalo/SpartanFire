@@ -16,7 +16,7 @@ public class SpartanFire
 {
     public static final String MODID = "spartanfire";
     public static final String NAME = "Spartan Fire";
-    public static final String VERSION = "0.04";
+    public static final String VERSION = "@VERSION@";
 
     private static Logger logger;
 
