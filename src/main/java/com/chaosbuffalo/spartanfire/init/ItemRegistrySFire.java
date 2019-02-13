@@ -4,7 +4,10 @@ import com.chaosbuffalo.spartanfire.IAFMatConverter;
 import com.chaosbuffalo.spartanfire.SpartanFire;
 import com.chaosbuffalo.spartanfire.integrations.FireSwordWeaponProperty;
 import com.chaosbuffalo.spartanfire.integrations.IceSwordWeaponProperty;
+import com.chaosbuffalo.spartanfire.integrations.MyrmexPoisonSwordProperty;
+import com.chaosbuffalo.spartanfire.integrations.MyrmexSwordProperty;
 import com.chaosbuffalo.spartanfire.utils;
+import com.github.alexthe666.iceandfire.IceAndFire;
 import com.github.alexthe666.iceandfire.core.ModItems;
 import com.oblivioussp.spartanweaponry.api.DamageHelper;
 import com.oblivioussp.spartanweaponry.api.SpartanWeaponryAPI;
@@ -29,6 +32,10 @@ public class ItemRegistrySFire {
     public static final String DRAGONBONE = "dragonbone";
     public static final String FIRE_DRAGONBONE = "fire_dragonbone";
     public static final String ICE_DRAGONBONE = "ice_dragonbone";
+    public static final String JUNGLE = "jungle";
+    public static final String JUNGLE_VENOM = "jungle_venom";
+    public static final String DESERT = "desert";
+    public static final String DESERT_VENOM = "desert_venom";
     static {
         MATERIALS_TO_REGISTER.add(new IAFMatConverter(DRAGONBONE,
                 utils.spartanMatFromToolMat(DRAGONBONE, ModItems.boneTools,
@@ -41,6 +48,29 @@ public class ItemRegistrySFire {
                 utils.spartanMatFromToolMat(ICE_DRAGONBONE, ModItems.iceBoneTools,
                         9867904, 14999238),
                 new IceSwordWeaponProperty(ICE_DRAGONBONE, SpartanFire.MODID)));
+        MATERIALS_TO_REGISTER.add(new IAFMatConverter(JUNGLE,
+                utils.spartanMatFromToolMat(JUNGLE, ModItems.myrmexChitin,
+                        9867904, 14999238),
+                new MyrmexSwordProperty(JUNGLE, SpartanFire.MODID)
+                ));
+        MATERIALS_TO_REGISTER.add(new IAFMatConverter(DESERT,
+                utils.spartanMatFromToolMat(DESERT, ModItems.myrmexChitin,
+                        9867904, 14999238),
+                new MyrmexSwordProperty(DESERT, SpartanFire.MODID)
+        ));
+        MATERIALS_TO_REGISTER.add(new IAFMatConverter(JUNGLE_VENOM,
+                utils.spartanMatFromToolMat(JUNGLE_VENOM, ModItems.myrmexChitin,
+                        9867904, 14999238),
+                new MyrmexSwordProperty(JUNGLE, SpartanFire.MODID),
+                new MyrmexPoisonSwordProperty(JUNGLE_VENOM, SpartanFire.MODID)
+        ));
+        MATERIALS_TO_REGISTER.add(new IAFMatConverter(DESERT_VENOM,
+                utils.spartanMatFromToolMat(DESERT_VENOM, ModItems.myrmexChitin,
+                        9867904, 14999238),
+                new MyrmexSwordProperty(DESERT, SpartanFire.MODID),
+                new MyrmexPoisonSwordProperty(DESERT_VENOM, SpartanFire.MODID)
+        ));
+
     }
 
     @SubscribeEvent
@@ -55,7 +85,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.KATANA,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(katana,
@@ -68,8 +98,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.GREATSWORD,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
-
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(greatsword, "greatsword_" + mat.material.getUnlocName());
@@ -81,7 +110,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.LONGSWORD,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(longsword, "longsword_" + mat.material.getUnlocName());
@@ -93,7 +122,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.SABER,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(saber, "saber_" + mat.material.getUnlocName());
@@ -105,7 +134,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.RAPIER,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(rapier, "rapier_" + mat.material.getUnlocName());
@@ -117,7 +146,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.DAGGER,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(dagger,"dagger_" + mat.material.getUnlocName());
@@ -129,7 +158,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.SPEAR,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(spear,"spear_" + mat.material.getUnlocName());
@@ -141,7 +170,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.PIKE,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(pike, "pike_" + mat.material.getUnlocName());
@@ -153,7 +182,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.LANCE,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(lance, "lance_" + mat.material.getUnlocName());
@@ -165,7 +194,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.HALBERD,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(halberd, "halberd_" + mat.material.getUnlocName());
@@ -177,7 +206,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.WARHAMMER,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(warhammer, "warhammer_" + mat.material.getUnlocName());
@@ -189,7 +218,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.HAMMER,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(hammer,"hammer_" + mat.material.getUnlocName());
@@ -201,7 +230,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.THROWING_AXE,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(throwing_axe,
@@ -214,7 +243,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.THROWING_KNIFE,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(throwing_knife,
@@ -225,7 +254,7 @@ public class ItemRegistrySFire {
                 Item longbow = SpartanWeaponryAPI.createLongbow(
                         mat.material,
                         SpartanFire.MODID,
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         null
                 );
 
@@ -236,7 +265,7 @@ public class ItemRegistrySFire {
                 Item crossbow = SpartanWeaponryAPI.createCrossbow(
                         mat.material,
                         SpartanFire.MODID,
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         null
                 );
 
@@ -249,7 +278,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.JAVELIN,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(javelin,"javelin_" + mat.material.getUnlocName());
@@ -261,7 +290,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.BATTLEAXE,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(battleaxe, "battleaxe_" + mat.material.getUnlocName());
@@ -273,7 +302,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.BOOMERANG,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(boomerang,
@@ -286,7 +315,7 @@ public class ItemRegistrySFire {
                         SpartanFire.MODID,
                         DamageHelper.getDamage(DamageHelper.WeaponType.MACE,
                                 mat.material.getMaterial().getAttackDamage()),
-                        CreativeTabsSW.TAB_SW,
+                        IceAndFire.TAB,
                         mat.properties.toArray(new WeaponProperty[mat.properties.size()])
                 );
                 ModelRenderRegistrySFire.addItemToRegistry(mace, "mace_" + mat.material.getUnlocName());

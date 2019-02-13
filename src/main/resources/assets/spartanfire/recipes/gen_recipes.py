@@ -1,649 +1,207 @@
 import json
 
-mat_names = ['dragonbone']
+class MatDefinition(object):
 
-def gen_katana_recipe_for_mat(mat_name, mod_name):
+    def __init__(self, mat_name, ingot_entry, conditions):
+        self.mat_name = mat_name
+        self.ingot_entry = ingot_entry
+        self.conditions = conditions
+        self.replace_tip = False
+        self.tip_entry = None
+
+dragonMat = MatDefinition('dragonbone', 
+    {"type": "forge:ore_dict", "ore": "ingotDragonbone"},
+    [])
+desertMat = MatDefinition('desert',
+    {"item": "iceandfire:myrmex_desert_chitin", "data": 0},
+    [])
+jungleMat = MatDefinition('jungle',
+    {"item": "iceandfire:myrmex_jungle_chitin", "data": 0},
+    [])
+desertPoisonMat = MatDefinition('desert_venom',
+    {"item": "iceandfire:myrmex_desert_chitin", "data": 0},
+    [])
+desertPoisonMat.replace_tip = True
+desertPoisonMat.tip_entry = {"item": "iceandfire:myrmex_stinger", "data": 0}
+junglePoisonMat = MatDefinition('jungle_venom',
+    {"item": "iceandfire:myrmex_jungle_chitin", "data": 0},
+    [])
+junglePoisonMat.replace_tip = True
+junglePoisonMat.tip_entry = {"item": "iceandfire:myrmex_stinger", "data": 0}
+
+mats = [dragonMat, desertMat, jungleMat, desertPoisonMat, junglePoisonMat]
+
+class RecipePattern(object):
+
+    def __init__(self, pattern, keys, tip):
+        self.pattern = pattern
+        self.keys = keys
+        self.tip = tip
+
+patterns = {}
+HAFT_ENTRY = {"h": {"item": "spartanweaponry:material","data": 0}}
+POLE_ENTRY = {"p": {"item": "spartanweaponry:material", "data": 1}}
+HAFT_POLE = {"p": {
+                "item": "spartanweaponry:material",
+                "data": 1},
+             "h": {
+                "item": "spartanweaponry:material",
+                "data": 0}}
+BOW_KEYS = {"h": {"item": "spartanweaponry:material",
+                  "data": 0},
+            "s": {"type": "forge:ore_dict",
+                  "ore": "string"},
+            "w": {"type": "forge:ore_dict",
+                  "ore": "stickWood"}}
+CROSSBOW_KEYS = {"h": {"item": "spartanweaponry:material",
+                        "data": 0},
+                "b": {"item": "minecraft:bow"},
+                "s": {"type": "forge:ore_dict",
+                      "ore": "string"},
+                "w": {"type": "forge:ore_dict",
+                      "ore": "logWood"}}
+STICK_HAFT = { "h": {"item": "spartanweaponry:material",
+                     "data": 0},
+                "s": {"type": "forge:ore_dict",
+                      "ore": "stickWood"}}
+BOOMERANG_KEYS = {"w": {"type": "forge:ore_dict",
+                        "ore": "plankWood"}}
+
+patterns["katana"] = RecipePattern(
+    ["  i", 
+     " i ", 
+     "h  "], 
+    HAFT_ENTRY, (0, 2))
+patterns["greatsword"] = RecipePattern(
+    [" i ",
+     "iii", 
+     "ihi"],
+    HAFT_ENTRY, (0, 1))
+patterns["longsword"] = RecipePattern(
+    [" i ", 
+     " i ", 
+     "ihi"],
+    HAFT_ENTRY, (0, 1))
+patterns["saber"] = RecipePattern(
+    [" i",
+     " i",
+     "ih"],
+    HAFT_ENTRY, (0, 1))
+patterns["rapier"] = RecipePattern(
+    ["  i",
+     "ii ",
+     "hi "],
+    HAFT_ENTRY, (0, 2))
+patterns["spear"] = RecipePattern(
+    ["i",
+     "p"],
+    POLE_ENTRY, (0, 0))
+patterns["dagger"] = RecipePattern(
+    ["i",
+     "h"],
+    HAFT_ENTRY, (0, 0))
+patterns["pike"] = RecipePattern(
+    ["i",
+     "p",
+     "p"],
+    POLE_ENTRY, (0, 0))
+patterns["lance"] = RecipePattern(
+    ["i",
+     "p",
+     "h"],
+    HAFT_POLE, (0, 0))
+patterns["halberd"] = RecipePattern(
+    [" i",
+     "ip",
+     "i "],
+    POLE_ENTRY, (0, 1))
+patterns["warhammer"] = RecipePattern(
+    ["ii",
+     " h"],
+    HAFT_ENTRY, (0, 0))
+patterns["throwing_axe"] = RecipePattern(
+    ["hi",
+     " i"],
+    HAFT_ENTRY, (0, 1))
+patterns["hammer"] = RecipePattern(
+    ["iii",
+     "iii",
+     " h "],
+    HAFT_ENTRY, (0, 1))
+patterns["throwing_knife"] = RecipePattern(
+    ["hi"],
+    HAFT_ENTRY, (0, 1))
+patterns["longbow"] = RecipePattern(
+    ["hwi",
+     "w s",
+     "iss"],
+    BOW_KEYS, (0, 2))
+patterns["crossbow"] = RecipePattern(
+    ["bsi",
+     "sw ",
+     "i h",],
+    CROSSBOW_KEYS, (2, 0))
+patterns["javelin"] = RecipePattern(
+    ["pi"],
+    POLE_ENTRY, (0, 1))
+patterns["battleaxe"] = RecipePattern(
+    ["iii",
+     "isi",
+     " h "],
+    STICK_HAFT, (0, 1))
+patterns["mace"] = RecipePattern(
+    [" ii",
+     " si",
+     "h  "],
+    STICK_HAFT, (0, 2))
+patterns["boomerang"] = RecipePattern(
+    ["iww",
+     "w  ",
+     "w  "],
+    BOOMERANG_KEYS, (0, 0))
+
+def gen_traditional_recipe_for_weapon(weapon_name, mat_definition, pattern, mod_name):
+    pattern_dict = pattern.keys.copy()
+    pattern_dict["i"] = mat_definition.ingot_entry
     gen_dict = {
         "type": "minecraft:crafting_shaped",
-        "pattern": [
-                    "  i",
-                    " i ",
-                    "h  "
-                    ],
-        "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                    },
-                "h": {
-                    "item": "spartanweaponry:material",
-                    "data": 0
-                    }
-            },
+        "pattern": pattern.pattern,
+        "key": pattern_dict,
         "result": {
-            "item": mod_name + ":katana_" + mat_name
+            "item": mod_name + ":" + weapon_name + "_" + mat_definition.mat_name
         },
-    "conditions": [
-            {
-            "type": "ore_dict_exists",
-            "ore_dict": "ingot" + mat_name.capitalize()
-            }
-        ]
+        "conditions": mat_definition.conditions
     }
-    with open('katana_' + mat_name + '.json', 'w') as outfile:
+    with open(weapon_name + "_" + mat_definition.mat_name + '.json', 'w') as outfile:
         json.dump(gen_dict, outfile)
 
-def gen_greatsword_recipe(mat_name, mod_name):
+def does_pattern_have_i(pattern):
+    long_string = ''.join(pattern)
+    return "i" in long_string
+
+
+def gen_replace_tip_recipe_for_weapon(weapon_name, mat_definition, pattern, mod_name):
+    pattern_dict = pattern.keys.copy()
+    pattern_dict["t"] = mat_definition.tip_entry
+    patCopy = [x for x in pattern.pattern]
+    trow, tcol = pattern.tip
+    tipReplace = list(patCopy[trow])
+    tipReplace[tcol] = 't'
+    patCopy[trow] = ''.join(tipReplace)
+    if does_pattern_have_i(patCopy):
+        pattern_dict["i"] = mat_definition.ingot_entry
     gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                " i ",
-                "iii",
-                "ihi"
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "h": {
-                    "item": "spartanweaponry:material",
-                    "data": 0
-                }
-            },
-            "result": {
-                "item": mod_name + ":greatsword_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('greatsword_' + mat_name + '.json', 'w') as outfile:
+        "type": "minecraft:crafting_shaped",
+        "pattern": patCopy,
+        "key": pattern_dict,
+        "result": {
+            "item": mod_name + ":" + weapon_name + "_" + mat_definition.mat_name
+        },
+        "conditions": mat_definition.conditions
+    }
+    with open(weapon_name + "_" + mat_definition.mat_name + '.json', 'w') as outfile:
         json.dump(gen_dict, outfile)
 
-def gen_longsword_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                " i ",
-                " i ",
-                "ihi"
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "h": {
-                    "item": "spartanweaponry:material",
-                    "data": 0
-                }
-            },
-            "result": {
-                "item": mod_name + ":longsword_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('longsword_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile)
-
-def gen_saber_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                " i",
-                " i",
-                "ih"
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "h": {
-                    "item": "spartanweaponry:material",
-                    "data": 0
-                }
-            },
-            "result": {
-                "item": mod_name + ":saber_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('saber_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile)
-
-def gen_rapier_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                "  i",
-                "ii ",
-                "hi "
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "h": {
-                    "item": "spartanweaponry:material",
-                    "data": 0
-                }
-            },
-            "result": {
-                "item": mod_name + ":rapier_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('rapier_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile)  
-
-def gen_spear_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                "i",
-                "p"
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "p": {
-                    "item": "spartanweaponry:material",
-                    "data": 1
-                }
-            },
-            "result": {
-                "item": mod_name + ":spear_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('spear_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile) 
-
-def gen_dagger_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                "i",
-                "h"
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "h": {
-                    "item": "spartanweaponry:material",
-                    "data": 0
-                }
-            },
-            "result": {
-                "item": mod_name + ":dagger_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('dagger_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile)
-
-def gen_pike_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                "i",
-                "p",
-                "p"
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "p": {
-                    "item": "spartanweaponry:material",
-                    "data": 1
-                }
-            },
-            "result": {
-                "item": mod_name + ":pike_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('pike_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile) 
-
-def gen_lance_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                "i",
-                "p",
-                "h"
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "p": {
-                    "item": "spartanweaponry:material",
-                    "data": 1
-                },
-                "h": {
-                    "item": "spartanweaponry:material",
-                    "data": 0
-                }
-            },
-            "result": {
-                "item": mod_name + ":lance_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('lance_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile) 
-
-def gen_halberd_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                " i",
-                "ip",
-                "i "
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "p": {
-                    "item": "spartanweaponry:material",
-                    "data": 1
-                },
-            },
-            "result": {
-                "item": mod_name + ":halberd_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('halberd_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile) 
-
-def gen_warhammer_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                "ii",
-                " h"
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "h": {
-                    "item": "spartanweaponry:material",
-                    "data": 0
-                }
-            },
-            "result": {
-                "item": mod_name + ":warhammer_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('warhammer_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile)
-
-def gen_throwing_axe_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                "hi",
-                " i"
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "h": {
-                    "item": "spartanweaponry:material",
-                    "data": 0
-                }
-            },
-            "result": {
-                "item": mod_name + ":throwing_axe_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('throwing_axe_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile)
-
-def gen_hammer_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                "iii",
-                "iii",
-                " h "
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "h": {
-                    "item": "spartanweaponry:material",
-                    "data": 0
-                }
-            },
-            "result": {
-                "item": mod_name + ":hammer_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('hammer_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile)
-
-def gen_throwing_knife_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                "hi"
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "h": {
-                    "item": "spartanweaponry:material",
-                    "data": 0
-                }
-            },
-            "result": {
-                "item": mod_name + ":throwing_knife_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('throwing_knife_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile)
-
-def gen_longbow_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-                "pattern": [
-                            "hwi",
-                            "w s",
-                            "iss"
-                        ],
-                "key": {
-                    "i": {
-                        "type": "forge:ore_dict",
-                        "ore": "ingot" + mat_name.capitalize()
-                    },
-                    "h": {
-                        "item": "spartanweaponry:material",
-                        "data": 0
-                    },
-                    "s": {
-                        "type": "forge:ore_dict",
-                        "ore": "string"
-                    },
-                    "w": {
-                        "type": "forge:ore_dict",
-                        "ore": "stickWood"
-                    }
-                },
-            "result": {
-                "item": mod_name + ":longbow_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('longbow_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile)
-
-def gen_crossbow_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-                 "pattern": [
-                                "bsi",
-                                "sw ",
-                                "i h"
-                            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "h": {
-                    "item": "spartanweaponry:material",
-                    "data": 0
-                },
-                "b": {
-                    "item": "minecraft:bow"
-                },
-                "s": {
-                    "type": "forge:ore_dict",
-                    "ore": "string"
-                },
-                "w": {
-                    "type": "forge:ore_dict",
-                    "ore": "logWood"
-                }
-            },
-            "result": {
-                "item": mod_name + ":crossbow_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('crossbow_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile)
-
-def gen_javelin_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                "pi"
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "p": {
-                    "item": "spartanweaponry:material",
-                    "data": 1
-                },
-            },
-            "result": {
-                "item": mod_name + ":javelin_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('javelin_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile) 
-
-def gen_battleaxe_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                "iii",
-                "isi",
-                " h "
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "h": {
-                    "item": "spartanweaponry:material",
-                    "data": 0
-                },
-                "s": {
-                    "type": "forge:ore_dict",
-                    "ore": "stickWood"
-                }
-            },
-            "result": {
-                "item": mod_name + ":battleaxe_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('battleaxe_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile) 
-
-def gen_mace_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                " ii",
-                " si",
-                "h  "
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "h": {
-                    "item": "spartanweaponry:material",
-                    "data": 0
-                },
-                "s": {
-                    "type": "forge:ore_dict",
-                    "ore": "stickWood"
-                }
-            },
-            "result": {
-                "item": mod_name + ":mace_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('mace_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile) 
-
-def gen_boomerang_recipe(mat_name, mod_name):
-    gen_dict = {
-            "type": "minecraft:crafting_shaped",
-            "pattern": [
-                "iww",
-                "w  ",
-                "w  "
-            ],
-            "key": {
-                "i": {
-                    "type": "forge:ore_dict",
-                    "ore": "ingot" + mat_name.capitalize()
-                },
-                "w": {
-                    "type": "forge:ore_dict",
-                    "ore": "plankWood"
-                }
-            },
-            "result": {
-                "item": mod_name + ":boomerang_" + mat_name
-            },
-            "conditions": [
-                {
-                    "type": "ore_dict_exists",
-                    "ore_dict": "ingot" + mat_name.capitalize()
-                }
-            ]
-        }
-    with open('boomerang_' + mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile) 
 
 MOD_NAME = "spartanfire"
 
@@ -651,8 +209,6 @@ ALL_WEAPONS = ['katana', 'greatsword', 'longsword', 'saber', 'rapier',
                 'spear', 'dagger', 'pike', 'lance', 'halberd', 'warhammer',
                 'throwing_axe', 'hammer', 'throwing_knife', 'longbow',
                 'crossbow', 'javelin', 'battleaxe', 'mace', 'boomerang']
-
-
 
 def gen_recipe_for_single_item_transform(start_mod, result_mod, 
     start_weapon, result_weapon, item, start_material, result_material, start_data, result_data, item_data):
@@ -683,25 +239,10 @@ for weapon in ALL_WEAPONS:
     gen_recipe_for_single_item_transform(MOD_NAME, MOD_NAME,
         weapon, weapon, "iceandfire:ice_dragon_blood", "dragonbone", "ice_dragonbone", 0, 0, 0)
 
+for mat_definition in mats:
+    for weapon in ALL_WEAPONS:
+        if mat_definition.replace_tip:
+            gen_replace_tip_recipe_for_weapon(weapon, mat_definition, patterns[weapon], MOD_NAME)
+        else:
+            gen_traditional_recipe_for_weapon(weapon, mat_definition, patterns[weapon], MOD_NAME)
 
-for each in mat_names:
-    gen_katana_recipe_for_mat(each, MOD_NAME)
-    gen_greatsword_recipe(each, MOD_NAME)
-    gen_longsword_recipe(each, MOD_NAME)
-    gen_saber_recipe(each, MOD_NAME)
-    gen_rapier_recipe(each, MOD_NAME)
-    gen_spear_recipe(each, MOD_NAME)
-    gen_dagger_recipe(each, MOD_NAME)
-    gen_pike_recipe(each, MOD_NAME)
-    gen_lance_recipe(each, MOD_NAME)
-    gen_halberd_recipe(each, MOD_NAME)
-    gen_warhammer_recipe(each, MOD_NAME)
-    gen_throwing_axe_recipe(each, MOD_NAME)
-    gen_hammer_recipe(each, MOD_NAME)
-    gen_throwing_knife_recipe(each, MOD_NAME)
-    gen_longbow_recipe(each, MOD_NAME)
-    gen_crossbow_recipe(each, MOD_NAME)
-    gen_javelin_recipe(each, MOD_NAME)
-    gen_battleaxe_recipe(each, MOD_NAME)
-    gen_mace_recipe(each, MOD_NAME)
-    gen_boomerang_recipe(each, MOD_NAME)

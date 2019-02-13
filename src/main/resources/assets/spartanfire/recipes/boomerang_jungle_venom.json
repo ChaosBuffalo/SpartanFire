@@ -1,0 +1,1 @@
+{"pattern": ["tww", "w  ", "w  "], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:boomerang_jungle_venom"}, "key": {"t": {"item": "iceandfire:myrmex_stinger", "data": 0}, "w": {"ore": "plankWood", "type": "forge:ore_dict"}}}

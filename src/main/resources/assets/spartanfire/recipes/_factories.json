@@ -1,6 +1,0 @@
-{
-	"conditions": {
-		"ore_dict_exists": "com.chaosbuffalo.spartanfire.ConditionFactoryOreDict",
-		"item_exists": "com.chaosbuffalo.spartanfire.ConditionFactoryItemExists"
-	}
-}

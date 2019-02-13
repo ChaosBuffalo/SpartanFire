@@ -1,0 +1,1 @@
+{"pattern": ["t", "p", "h"], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:lance_jungle_venom"}, "key": {"p": {"item": "spartanweaponry:material", "data": 1}, "t": {"item": "iceandfire:myrmex_stinger", "data": 0}, "h": {"item": "spartanweaponry:material", "data": 0}}}

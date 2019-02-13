@@ -1,0 +1,1 @@
+{"pattern": ["ht"], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:throwing_knife_jungle_venom"}, "key": {"h": {"item": "spartanweaponry:material", "data": 0}, "t": {"item": "iceandfire:myrmex_stinger", "data": 0}}}
