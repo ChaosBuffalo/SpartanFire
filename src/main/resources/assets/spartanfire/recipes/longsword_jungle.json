@@ -1,1 +1,1 @@
-{"pattern": [" i ", " i ", "ihi"], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:longsword_jungle"}, "key": {"i": {"item": "iceandfire:myrmex_jungle_chitin", "data": 0}, "h": {"item": "spartanweaponry:material", "data": 0}}}
+{"pattern": [" i ", " i ", "ihi"], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:longsword_jungle"}, "key": {"i": {"item": "iceandfire:myrmex_jungle_chitin", "data": 0}, "h": {"item": "spartanfire:witherbone_handle", "data": 0}}}

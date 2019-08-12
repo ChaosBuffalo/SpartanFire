@@ -11,7 +11,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import org.apache.logging.log4j.Logger;
 
 @Mod(modid = SpartanFire.MODID, name = SpartanFire.NAME, version = SpartanFire.VERSION,
-        dependencies="required-after:iceandfire;required-after:spartanweaponry@[beta 1.2.0,);required-after:llibrary@[1.7.9,)")
+        dependencies="required-after:iceandfire;required-after:spartanweaponry@[beta 1.3.0,);required-after:llibrary@[1.7.19,)")
 public class SpartanFire
 {
     public static final String MODID = "spartanfire";

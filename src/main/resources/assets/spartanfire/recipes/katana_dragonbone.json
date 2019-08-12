@@ -1,1 +1,1 @@
-{"pattern": ["  i", " i ", "h  "], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:katana_dragonbone"}, "key": {"i": {"ore": "ingotDragonbone", "type": "forge:ore_dict"}, "h": {"item": "spartanweaponry:material", "data": 0}}}
+{"pattern": ["  i", " i ", "h  "], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:katana_dragonbone"}, "key": {"i": {"ore": "ingotDragonbone", "type": "forge:ore_dict"}, "h": {"item": "spartanfire:witherbone_handle", "data": 0}}}

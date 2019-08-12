@@ -1,0 +1,2 @@
+{"type": "forge:ore_shapeless", "result": {"count": 1, "item": "spartanfire:witherbone_handle", "data": 0},
+  "ingredients": [{"type": "forge:ore_dict", "ore": "boneWither"}, {"item": "spartanweaponry:material","data": 0}]}

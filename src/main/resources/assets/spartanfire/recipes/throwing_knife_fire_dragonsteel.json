@@ -1,0 +1,1 @@
+{"pattern": ["hi"], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:throwing_knife_fire_dragonsteel"}, "key": {"i": {"ore": "ingotFireDragonsteel", "type": "forge:ore_dict"}, "h": {"item": "spartanfire:witherbone_handle", "data": 0}}}

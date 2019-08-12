@@ -1,0 +1,1 @@
+{"pattern": ["pi"], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:javelin_fire_dragonsteel"}, "key": {"i": {"ore": "ingotFireDragonsteel", "type": "forge:ore_dict"}, "p": {"item": "spartanfire:witherbone_pole", "data": 0}}}

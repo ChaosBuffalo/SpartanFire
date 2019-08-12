@@ -41,9 +41,9 @@ repositories {
 }
 
 dependencies {
-    deobfCompile 'ice-and-fire-dragons:iceandfire:1.6.1:1.12.2'
-    deobfCompile "spartan-weaponry:SpartanWeaponry-1.12.2:beta:1.2.3"
-    compile "net.ilexiconn:llibrary:1.7.9-1.12.2:dev"
+    deobfCompile 'ice-and-fire-dragons:iceandfire:1.8.0'
+    deobfCompile "spartan-weaponry:SpartanWeaponry-1.12.2:beta:1.3.0"
+    compile "net.ilexiconn:llibrary:1.7.19-1.12.2:dev"
 }
 
 processResources {

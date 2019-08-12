@@ -1,1 +1,1 @@
-{"pattern": ["t", "p"], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:spear_jungle_venom"}, "key": {"p": {"item": "spartanweaponry:material", "data": 1}, "t": {"item": "iceandfire:myrmex_stinger", "data": 0}}}
+{"conditions": [], "type": "forge:ore_shapeless", "result": {"item": "spartanfire:spear_jungle_venom"}, "ingredients": [{"item": "iceandfire:myrmex_stinger", "data": 0}, {"item": "spartanfire:spear_jungle", "data": 0}]}

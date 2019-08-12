@@ -1,1 +1,1 @@
-{"pattern": ["tww", "w  ", "w  "], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:boomerang_desert_venom"}, "key": {"t": {"item": "iceandfire:myrmex_stinger", "data": 0}, "w": {"ore": "plankWood", "type": "forge:ore_dict"}}}
+{"conditions": [], "type": "forge:ore_shapeless", "result": {"item": "spartanfire:boomerang_desert_venom"}, "ingredients": [{"item": "iceandfire:myrmex_stinger", "data": 0}, {"item": "spartanfire:boomerang_desert", "data": 0}]}

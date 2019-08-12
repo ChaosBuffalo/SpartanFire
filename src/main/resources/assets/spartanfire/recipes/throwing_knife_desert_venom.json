@@ -1,1 +1,1 @@
-{"pattern": ["ht"], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:throwing_knife_desert_venom"}, "key": {"h": {"item": "spartanweaponry:material", "data": 0}, "t": {"item": "iceandfire:myrmex_stinger", "data": 0}}}
+{"conditions": [], "type": "forge:ore_shapeless", "result": {"item": "spartanfire:throwing_knife_desert_venom"}, "ingredients": [{"item": "iceandfire:myrmex_stinger", "data": 0}, {"item": "spartanfire:throwing_knife_desert", "data": 0}]}

@@ -2,13 +2,24 @@ import json
 
 mat_names = [('dragonbone', 'dragon'), ('fire_dragonbone', 'fire_dragon'), ('ice_dragonbone', 'ice_dragon'),
     ('desert', 'desert'), ('desert_venom', 'desert_venom'), ('jungle', 'jungle'),
-    ('jungle_venom', 'jungle_venom')]
+    ('jungle_venom', 'jungle_venom'), ('fire_dragonsteel', 'dragonsteel_fire'),
+    ('ice_dragonsteel', 'dragonsteel_ice')]
 
 def gen_simple_item_model(mat_name, weapon_name, mod_name, texture_name):
     gen_dict = {
         "parent":"spartanweaponry:item/" + weapon_name + "_wood",
         "textures": {
             "layer0": mod_name + ":items/" + weapon_name + "_" + texture_name
+        }
+    }
+    with open(weapon_name + '_' + mat_name + '.json', 'w') as outfile:
+        json.dump(gen_dict, outfile) 
+
+def gen_quarterstaff_model(mat_name, weapon_name, mod_name, texture_name):
+    gen_dict = {
+        "parent":"spartanweaponry:item/staff",
+        "textures": {
+            "layer0": mod_name + ":items/" + "quarter" + weapon_name + "_" + texture_name
         }
     }
     with open(weapon_name + '_' + mat_name + '.json', 'w') as outfile:
@@ -156,6 +167,8 @@ for mat_name, texture_name in mat_names:
     gen_simple_item_model(mat_name, "throwing_knife", MOD_NAME, texture_name)
     gen_simple_item_model(mat_name, "warhammer", MOD_NAME, texture_name)
     gen_simple_item_model(mat_name, "battleaxe", MOD_NAME, texture_name)
+    gen_quarterstaff_model(mat_name, "staff", MOD_NAME, texture_name)
+    gen_simple_item_model(mat_name, "glaive", MOD_NAME, texture_name)
     gen_longbow(mat_name, MOD_NAME, texture_name)
     gen_crossbow(mat_name, MOD_NAME, texture_name)
   

@@ -1,0 +1,1 @@
+{"pattern": [" i ", " i ", "ip "], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:glaive_desert"}, "key": {"i": {"item": "iceandfire:myrmex_desert_chitin", "data": 0}, "p": {"item": "spartanfire:witherbone_pole", "data": 0}}}

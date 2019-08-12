@@ -1,1 +1,1 @@
-{"pattern": ["i", "p", "p"], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:pike_jungle"}, "key": {"i": {"item": "iceandfire:myrmex_jungle_chitin", "data": 0}, "p": {"item": "spartanweaponry:material", "data": 1}}}
+{"pattern": ["i", "p", "p"], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:pike_jungle"}, "key": {"i": {"item": "iceandfire:myrmex_jungle_chitin", "data": 0}, "p": {"item": "spartanfire:witherbone_pole", "data": 0}}}

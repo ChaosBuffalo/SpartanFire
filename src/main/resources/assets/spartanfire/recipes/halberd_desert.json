@@ -1,1 +1,1 @@
-{"pattern": [" i", "ip", "i "], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:halberd_desert"}, "key": {"i": {"item": "iceandfire:myrmex_desert_chitin", "data": 0}, "p": {"item": "spartanweaponry:material", "data": 1}}}
+{"pattern": [" i", "ip", "i "], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:halberd_desert"}, "key": {"i": {"item": "iceandfire:myrmex_desert_chitin", "data": 0}, "p": {"item": "spartanfire:witherbone_pole", "data": 0}}}

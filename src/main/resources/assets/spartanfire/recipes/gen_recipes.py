@@ -28,8 +28,15 @@ junglePoisonMat = MatDefinition('jungle_venom',
     [])
 junglePoisonMat.replace_tip = True
 junglePoisonMat.tip_entry = {"item": "iceandfire:myrmex_stinger", "data": 0}
+iceDragonSteelMat = MatDefinition('ice_dragonsteel',
+  {"type": "forge:ore_dict", "ore": "ingotIceDragonsteel"},
+  [])
+fireDragonSteelMat = MatDefinition('fire_dragonsteel',
+  {"type": "forge:ore_dict", "ore": "ingotFireDragonsteel"},
+  [])
 
-mats = [dragonMat, desertMat, jungleMat, desertPoisonMat, junglePoisonMat]
+mats = [dragonMat, desertMat, jungleMat, desertPoisonMat, junglePoisonMat,
+        iceDragonSteelMat, fireDragonSteelMat]
 
 class RecipePattern(object):
 
@@ -39,29 +46,22 @@ class RecipePattern(object):
         self.tip = tip
 
 patterns = {}
-HAFT_ENTRY = {"h": {"item": "spartanweaponry:material","data": 0}}
-POLE_ENTRY = {"p": {"item": "spartanweaponry:material", "data": 1}}
-HAFT_POLE = {"p": {
-                "item": "spartanweaponry:material",
-                "data": 1},
-             "h": {
-                "item": "spartanweaponry:material",
-                "data": 0}}
-BOW_KEYS = {"h": {"item": "spartanweaponry:material",
-                  "data": 0},
+HAFT_ENTRY = {"h": {"item": "spartanfire:witherbone_handle", "data": 0}}
+POLE_ENTRY = {"p": {"item": "spartanfire:witherbone_pole", "data": 0}}
+HAFT_POLE = {"p": {"item": "spartanfire:witherbone_pole", "data": 0},
+             "h": {"item": "spartanfire:witherbone_handle", "data": 0}}
+BOW_KEYS = {"h": {"item": "spartanfire:witherbone_handle", "data": 0},
             "s": {"type": "forge:ore_dict",
                   "ore": "string"},
             "w": {"type": "forge:ore_dict",
                   "ore": "stickWood"}}
-CROSSBOW_KEYS = {"h": {"item": "spartanweaponry:material",
-                        "data": 0},
+CROSSBOW_KEYS = {"h": {"item": "spartanfire:witherbone_handle", "data": 0},
                 "b": {"item": "minecraft:bow"},
                 "s": {"type": "forge:ore_dict",
                       "ore": "string"},
                 "w": {"type": "forge:ore_dict",
                       "ore": "logWood"}}
-STICK_HAFT = { "h": {"item": "spartanweaponry:material",
-                     "data": 0},
+STICK_HAFT = { "h": {"item": "spartanfire:witherbone_handle", "data": 0},
                 "s": {"type": "forge:ore_dict",
                       "ore": "stickWood"}}
 BOOMERANG_KEYS = {"w": {"type": "forge:ore_dict",
@@ -159,6 +159,16 @@ patterns["boomerang"] = RecipePattern(
      "w  ",
      "w  "],
     BOOMERANG_KEYS, (0, 0))
+patterns["glaive"] = RecipePattern(
+    [" i ",
+     " i ",
+     "ip "],
+     POLE_ENTRY, (0, 1))
+patterns["staff"] = RecipePattern(
+    [" p ",
+     " i ",
+     "   "],
+    POLE_ENTRY, (1, 1))
 
 def gen_traditional_recipe_for_weapon(weapon_name, mat_definition, pattern, mod_name):
     pattern_dict = pattern.keys.copy()
@@ -177,6 +187,7 @@ def gen_traditional_recipe_for_weapon(weapon_name, mat_definition, pattern, mod_
 
 def does_pattern_have_i(pattern):
     long_string = ''.join(pattern)
+    print(long_string)
     return "i" in long_string
 
 
@@ -190,17 +201,35 @@ def gen_replace_tip_recipe_for_weapon(weapon_name, mat_definition, pattern, mod_
     patCopy[trow] = ''.join(tipReplace)
     if does_pattern_have_i(patCopy):
         pattern_dict["i"] = mat_definition.ingot_entry
-    gen_dict = {
-        "type": "minecraft:crafting_shaped",
-        "pattern": patCopy,
-        "key": pattern_dict,
-        "result": {
-            "item": mod_name + ":" + weapon_name + "_" + mat_definition.mat_name
-        },
-        "conditions": mat_definition.conditions
-    }
-    with open(weapon_name + "_" + mat_definition.mat_name + '.json', 'w') as outfile:
-        json.dump(gen_dict, outfile)
+        gen_dict = {
+            "type": "minecraft:crafting_shaped",
+            "pattern": patCopy,
+            "key": pattern_dict,
+            "result": {
+                "item": mod_name + ":" + weapon_name + "_" + mat_definition.mat_name
+            },
+            "conditions": mat_definition.conditions
+        }
+        with open(weapon_name + "_" + mat_definition.mat_name + '.json', 'w') as outfile:
+            json.dump(gen_dict, outfile)
+    else:
+        print("weapon has no i in recipe", weapon_name, mat_definition.mat_name)
+        gen_dict = {
+            "type": "forge:ore_shapeless",
+            "ingredients": [
+            mat_definition.tip_entry,
+            {
+              "item": mod_name + ":" + weapon_name + "_" + mat_definition.mat_name.split('_')[0],
+              "data": 0
+            }
+            ],
+            "result": {
+                "item": mod_name + ":" + weapon_name + "_" + mat_definition.mat_name
+            },
+            "conditions": mat_definition.conditions
+        }
+        with open(weapon_name + "_" + mat_definition.mat_name + '.json', 'w') as outfile:
+              json.dump(gen_dict, outfile)
 
 
 MOD_NAME = "spartanfire"
@@ -208,7 +237,8 @@ MOD_NAME = "spartanfire"
 ALL_WEAPONS = ['katana', 'greatsword', 'longsword', 'saber', 'rapier',
                 'spear', 'dagger', 'pike', 'lance', 'halberd', 'warhammer',
                 'throwing_axe', 'hammer', 'throwing_knife', 'longbow',
-                'crossbow', 'javelin', 'battleaxe', 'mace', 'boomerang']
+                'crossbow', 'javelin', 'battleaxe', 'mace', 'boomerang',
+                'staff', 'glaive']
 
 def gen_recipe_for_single_item_transform(start_mod, result_mod, 
     start_weapon, result_weapon, item, start_material, result_material, start_data, result_data, item_data):
