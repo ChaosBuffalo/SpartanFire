@@ -81,11 +81,11 @@ public class ItemRegistrySFire {
         MATERIALS_TO_REGISTER.add(new IAFMatConverter(ICE_DRAGONSTEEL,
                 Utils.spartanMatFromToolMat(ICE_DRAGONSTEEL, ModItems.dragonsteel_ice_tools,
                         9867904, 14999238),
-                new IceDragonsteelWeaponProperty(FIRE_DRAGONSTEEL, SpartanFire.MODID)));
+                new IceDragonsteelWeaponProperty(ICE_DRAGONSTEEL, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(new IAFMatConverter(FIRE_DRAGONSTEEL,
                 Utils.spartanMatFromToolMat(FIRE_DRAGONSTEEL, ModItems.dragonsteel_fire_tools,
                         9867904, 14999238),
-                new IceDragonsteelWeaponProperty(FIRE_DRAGONSTEEL, SpartanFire.MODID)));
+                new FireDragonsteelWeaponProperty(FIRE_DRAGONSTEEL, SpartanFire.MODID)));
 
     }
 
