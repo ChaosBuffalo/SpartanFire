@@ -17,7 +17,6 @@ public class MyrmexSwordProperty extends WeaponPropertyWithCallback {
         super(propType, propModId);
     }
 
-    @Override
     public float modifyDamageDealt(ToolMaterialEx material, float baseDamage, float initialDamage, DamageSource source, EntityLivingBase attacker, EntityLivingBase victim) {
         if (victim.getCreatureAttribute() != EnumCreatureAttribute.ARTHROPOD) {
             return baseDamage + 4;
