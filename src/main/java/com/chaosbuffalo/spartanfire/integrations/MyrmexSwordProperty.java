@@ -2,7 +2,7 @@ package com.chaosbuffalo.spartanfire.integrations;
 
 import com.github.alexthe666.iceandfire.entity.EntityDeathWorm;
 import com.oblivioussp.spartanweaponry.api.ToolMaterialEx;
-import com.oblivioussp.spartanweaponry.api.weaponproperty.WeaponPropertyExtraDamage;
+import com.oblivioussp.spartanweaponry.api.weaponproperty.WeaponPropertyWithCallback;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 
