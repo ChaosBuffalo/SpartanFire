@@ -6,7 +6,7 @@ import com.chaosbuffalo.spartanfire.integrations.*;
 import com.chaosbuffalo.spartanfire.Utils;
 import com.chaosbuffalo.spartanfire.items.SFItem;
 import com.github.alexthe666.iceandfire.IceAndFire;
-import com.github.alexthe666.iceandfire.core.ModItems;
+import com.github.alexthe666.iceandfire.item.IafItemRegistry;
 import com.oblivioussp.spartanweaponry.api.SpartanWeaponryAPI;
 import com.oblivioussp.spartanweaponry.api.weaponproperty.WeaponProperty;
 import com.oblivioussp.spartanweaponry.util.ConfigHandler;
@@ -46,44 +46,45 @@ public class ItemRegistrySFire {
 
     static {
         MATERIALS_TO_REGISTER.add(new IAFMatConverter(DRAGONBONE,
-                Utils.spartanMatFromToolMat(DRAGONBONE, ModItems.boneTools,
+                Utils.spartanMatFromToolMat(DRAGONBONE, IafItemRegistry.boneTools,
                 9867904, 14999238, "ingotDragonbone")));
         MATERIALS_TO_REGISTER.add(new IAFMatConverter(FIRE_DRAGONBONE,
-                Utils.spartanMatFromToolMat(FIRE_DRAGONBONE, ModItems.fireBoneTools,
+                Utils.spartanMatFromToolMat(FIRE_DRAGONBONE, IafItemRegistry.fireBoneTools,
                 9867904, 14999238, "ingotDragonbone"),
                 new FireSwordWeaponProperty(FIRE_DRAGONBONE, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(new IAFMatConverter(ICE_DRAGONBONE,
-                Utils.spartanMatFromToolMat(ICE_DRAGONBONE, ModItems.iceBoneTools,
+                Utils.spartanMatFromToolMat(ICE_DRAGONBONE, IafItemRegistry.iceBoneTools,
                         9867904, 14999238, "ingotDragonbone"),
                 new IceSwordWeaponProperty(ICE_DRAGONBONE, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(new IAFMatConverter(JUNGLE,
-                Utils.spartanMatFromToolMat(JUNGLE, ModItems.myrmexChitin,
+                Utils.spartanMatFromToolMat(JUNGLE, IafItemRegistry.myrmexChitin,
                         9867904, 14999238, "ingotJungleChitin"),
                 new MyrmexSwordProperty(JUNGLE, SpartanFire.MODID)
                 ));
         MATERIALS_TO_REGISTER.add(new IAFMatConverter(DESERT,
-                Utils.spartanMatFromToolMat(DESERT, ModItems.myrmexChitin,
+                Utils.spartanMatFromToolMat(DESERT, IafItemRegistry.myrmexChitin,
                         9867904, 14999238, "ingotDesertChitin"),
                 new MyrmexSwordProperty(DESERT, SpartanFire.MODID)
         ));
         MATERIALS_TO_REGISTER.add(new IAFMatConverter(JUNGLE_VENOM,
-                Utils.spartanMatFromToolMat(JUNGLE_VENOM, ModItems.myrmexChitin,
+                Utils.spartanMatFromToolMat(JUNGLE_VENOM, IafItemRegistry.myrmexChitin,
                         9867904, 14999238, "ingotJungleChitin"),
                 new MyrmexSwordProperty(JUNGLE, SpartanFire.MODID),
                 new MyrmexPoisonSwordProperty(JUNGLE_VENOM, SpartanFire.MODID)
         ));
         MATERIALS_TO_REGISTER.add(new IAFMatConverter(DESERT_VENOM,
-                Utils.spartanMatFromToolMat(DESERT_VENOM, ModItems.myrmexChitin,
+                Utils.spartanMatFromToolMat(DESERT_VENOM, IafItemRegistry.myrmexChitin,
                         9867904, 14999238, "ingotDesertChitin"),
                 new MyrmexSwordProperty(DESERT, SpartanFire.MODID),
                 new MyrmexPoisonSwordProperty(DESERT_VENOM, SpartanFire.MODID)
         ));
         MATERIALS_TO_REGISTER.add(new IAFMatConverter(ICE_DRAGONSTEEL,
-                Utils.spartanMatFromToolMat(ICE_DRAGONSTEEL, ModItems.dragonsteel_ice_tools,
+                Utils.spartanMatFromToolMat(ICE_DRAGONSTEEL, IafItemRegistry.dragonsteel_ice_tools,
+
                         9867904, 14999238, "ingotIceDragonsteel"),
                 new IceDragonsteelWeaponProperty(ICE_DRAGONSTEEL, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(new IAFMatConverter(FIRE_DRAGONSTEEL,
-                Utils.spartanMatFromToolMat(FIRE_DRAGONSTEEL, ModItems.dragonsteel_fire_tools,
+                Utils.spartanMatFromToolMat(FIRE_DRAGONSTEEL, IafItemRegistry.dragonsteel_fire_tools,
                         9867904, 14999238, "ingotFireDragonsteel"),
                 new FireDragonsteelWeaponProperty(FIRE_DRAGONSTEEL, SpartanFire.MODID)));
 
@@ -93,9 +94,9 @@ public class ItemRegistrySFire {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> ev) {
         // Don't know why this was left out from ice and fire
-        OreDictionary.registerOre("ingotDragonbone", ModItems.dragonbone);
-        OreDictionary.registerOre("ingotJungleChitin", ModItems.myrmex_jungle_chitin);
-        OreDictionary.registerOre("ingotDesertChitin", ModItems.myrmex_desert_chitin);
+        OreDictionary.registerOre("ingotDragonbone", IafItemRegistry.dragonbone);
+        OreDictionary.registerOre("ingotJungleChitin", IafItemRegistry.myrmex_jungle_chitin);
+        OreDictionary.registerOre("ingotDesertChitin", IafItemRegistry.myrmex_desert_chitin);
 
 
         Set<Item> item_set = new LinkedHashSet<>();
