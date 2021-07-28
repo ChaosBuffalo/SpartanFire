@@ -1,6 +1,8 @@
 package com.chaosbuffalo.spartanfire;
 
 import com.oblivioussp.spartanweaponry.api.ToolMaterialEx;
+import com.oblivioussp.spartanweaponry.api.WeaponMaterial;
+import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
 import org.apache.commons.lang3.StringUtils;
 
@@ -9,9 +11,9 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class Utils {
 
-    public static ToolMaterialEx spartanMatFromToolMat(String name, Item.ToolMaterial material,
-                                                       int color1, int color2, String repairName){
-        return new ToolMaterialEx(
+    public static WeaponMaterial spartanMatFromToolMat(String name, IItemTier material,
+                                                         int color1, int color2, String repairName){
+        return new WeaponMaterial(
                 name,
                 repairName,
                 SpartanFire.MODID,

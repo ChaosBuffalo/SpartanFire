@@ -1,20 +1,20 @@
 package com.chaosbuffalo.spartanfire.integrations;
 
-import com.oblivioussp.spartanweaponry.api.ToolMaterialEx;
-import com.oblivioussp.spartanweaponry.api.weaponproperty.WeaponPropertyWithCallback;
+import com.oblivioussp.spartanweaponry.api.WeaponMaterial;
+import com.oblivioussp.spartanweaponry.api.trait.WeaponTraitWithCallback;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 
-public class FireDragonsteelWeaponProperty extends WeaponPropertyWithCallback {
+public class FireDragonsteelWeaponProperty extends WeaponTraitWithCallback {
 
     public FireDragonsteelWeaponProperty(String propType, String propModId) {
-        super(propType, propModId);
+        super(propType, propModId, TraitQuality.POSITIVE);
     }
 
-    public void onHitEntity(ToolMaterialEx material, ItemStack stack, EntityLivingBase target,
-                            EntityLivingBase attacker, Entity projectile) {
+    public void onHitEntity(WeaponMaterial material, ItemStack stack, LivingEntity target,
+                            LivingEntity attacker, Entity projectile) {
         target.setFire(15);
-        target.knockBack(target, 1F, attacker.posX - target.posX, attacker.posZ - target.posZ);
+        target.knockBack(target, 1F, attacker.getPosX() - target.getPosX(), attacker.getPosZ() - target.getPosZ());
     }
 }

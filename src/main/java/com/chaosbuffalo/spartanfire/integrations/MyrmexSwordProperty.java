@@ -1,24 +1,22 @@
 package com.chaosbuffalo.spartanfire.integrations;
 
 import com.github.alexthe666.iceandfire.entity.EntityDeathWorm;
-import com.oblivioussp.spartanweaponry.api.ToolMaterialEx;
-import com.oblivioussp.spartanweaponry.api.weaponproperty.WeaponPropertyWithCallback;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import com.oblivioussp.spartanweaponry.api.WeaponMaterial;
+import com.oblivioussp.spartanweaponry.api.trait.WeaponTraitWithCallback;
 
-import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.item.ItemStack;
+import net.minecraft.entity.CreatureAttribute;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.DamageSource;
 
 
-public class MyrmexSwordProperty extends WeaponPropertyWithCallback {
+public class MyrmexSwordProperty extends WeaponTraitWithCallback {
 
     public MyrmexSwordProperty(String propType, String propModId) {
-        super(propType, propModId);
+        super(propType, propModId, TraitQuality.POSITIVE);
     }
 
-    public float modifyDamageDealt(ToolMaterialEx material, float baseDamage, float initialDamage, DamageSource source, EntityLivingBase attacker, EntityLivingBase victim) {
-        if (victim.getCreatureAttribute() != EnumCreatureAttribute.ARTHROPOD) {
+    public float modifyDamageDealt(WeaponMaterial material, float baseDamage, float initialDamage, DamageSource source, LivingEntity attacker, LivingEntity victim) {
+        if (victim.getCreatureAttribute() != CreatureAttribute.ARTHROPOD) {
             return baseDamage + 4;
         }
         if (victim instanceof EntityDeathWorm) {
