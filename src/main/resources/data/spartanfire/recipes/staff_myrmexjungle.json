@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      " P ",
+      " I ",
+      "   "
+    ],
+    "key": {
+      "I": {
+        "item": "iceandfire:myrmex_jungle_chitin"
+    },
+      "P": {
+        "item": "spartanfire:witherbone_pole"
+      }
+    },
+    "result": {
+        "item": "spartanfire:staff_myrmexjungle"
+    }
+}

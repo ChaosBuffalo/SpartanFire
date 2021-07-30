@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "HWI",
+        "S W",
+        "ISS"
+    ],
+    "key": {
+        "I": {
+            "item": "iceandfire:dragonbone"
+        },
+        "H": {
+            "item": "spartanfire:witherbone_handle"
+        },
+        "S": {
+            "item": "minecraft:string"
+        },
+        "W": {
+            "tag": "minecraft:planks"
+        }
+    },
+    "result": {
+        "item": "spartanfire:longbow_dragonbone"
+    }
+}

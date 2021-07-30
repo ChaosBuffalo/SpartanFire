@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BSI",
+        "SW ",
+        "I H"
+    ],
+    "key": {
+        "I": {
+            "tag": "forge:ingots/dragonsteel_ice"
+        },
+        "H": {
+            "item": "spartanfire:witherbone_handle"
+        },
+        "S": {
+            "item": "minecraft:string"
+        },
+        "W": {
+            "tag": "minecraft:planks"
+        },
+        "B": {
+            "item": "minecraft:bow"
+        }
+    },
+    "result": {
+        "item": "spartanfire:heavy_crossbow_dragonsteel_ice"
+    }
+}

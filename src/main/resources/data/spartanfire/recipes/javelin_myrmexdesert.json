@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "PI"
+    ],
+    "key": {
+      "I": {
+        "item": "iceandfire:myrmex_desert_chitin"
+    },
+      "P": {
+        "item": "spartanfire:witherbone_pole"
+      }
+    },
+    "result": {
+        "item": "spartanfire:javelin_myrmexdesert"
+    }
+}

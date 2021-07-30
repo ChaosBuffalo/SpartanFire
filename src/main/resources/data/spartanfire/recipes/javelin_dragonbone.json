@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "PI"
+    ],
+    "key": {
+      "I": {
+        "item": "iceandfire:dragonbone"
+    },
+      "P": {
+        "item": "spartanfire:witherbone_pole"
+      }
+    },
+    "result": {
+        "item": "spartanfire:javelin_dragonbone"
+    }
+}

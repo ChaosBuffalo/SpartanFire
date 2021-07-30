@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      " I",
+      " I",
+      "IH"
+    ],
+    "key": {
+      "I": {
+        "tag": "forge:ingots/dragonsteel_fire"
+    },
+      "H": {
+        "item": "spartanfire:witherbone_handle"
+      }
+    },
+    "result": {
+        "item":  "spartanfire:saber_dragonsteel_fire"
+    }
+}

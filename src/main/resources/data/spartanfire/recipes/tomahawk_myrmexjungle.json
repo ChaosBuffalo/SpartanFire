@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "HI",
+      " I"
+    ],
+    "key": {
+      "I": {
+        "item": "iceandfire:myrmex_jungle_chitin"
+    },
+      "H": {
+        "item": "spartanfire:witherbone_handle"
+      }
+    },
+    "result": {
+        "item":  "spartanfire:tomahawk_myrmexjungle"
+    }
+}

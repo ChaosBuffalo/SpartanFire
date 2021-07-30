@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "IWW",
+      "W  ",
+      "W  "
+    ],
+    "key": {
+      "I": {
+        "item": "iceandfire:dragonbone"
+      },
+      "W": {
+        "tag": "minecraft:planks"
+      }
+    },
+    "result": {
+        "item": "spartanfire:boomerang_dragonbone"
+    }
+}

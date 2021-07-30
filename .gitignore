@@ -16,8 +16,10 @@ out
 # gradle
 build
 .gradle
+build.gradle.old
 
 # other
 eclipse
 run
 libs
+test

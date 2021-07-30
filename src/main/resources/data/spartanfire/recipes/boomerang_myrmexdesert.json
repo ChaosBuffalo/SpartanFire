@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "IWW",
+      "W  ",
+      "W  "
+    ],
+    "key": {
+      "I": {
+        "item": "iceandfire:myrmex_desert_chitin"
+      },
+      "W": {
+        "tag": "minecraft:planks"
+      }
+    },
+    "result": {
+        "item": "spartanfire:boomerang_myrmexdesert"
+    }
+}

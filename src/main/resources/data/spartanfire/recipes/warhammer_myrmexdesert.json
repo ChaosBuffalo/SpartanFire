@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "II",
+      " H"
+    ],
+    "key": {
+      "I": {
+        "item": "iceandfire:myrmex_desert_chitin"
+    },
+      "H": {
+        "item": "spartanfire:witherbone_handle"
+      }
+    },
+    "result": {
+        "item":  "spartanfire:warhammer_myrmexdesert"
+    }
+}

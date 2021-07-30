@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "BSI",
+        "SW ",
+        "I H"
+    ],
+    "key": {
+        "I": {
+            "item": "iceandfire:myrmex_desert_chitin"
+        },
+        "H": {
+            "item": "spartanfire:witherbone_handle"
+        },
+        "S": {
+            "item": "minecraft:string"
+        },
+        "W": {
+            "tag": "minecraft:planks"
+        },
+        "B": {
+            "item": "minecraft:bow"
+        }
+    },
+    "result": {
+        "item": "spartanfire:heavy_crossbow_myrmexdesert"
+    }
+}

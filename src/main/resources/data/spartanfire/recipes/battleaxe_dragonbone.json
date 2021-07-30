@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "ITI",
+      "ISI",
+      " H "
+    ],
+    "key": {
+      "I": {
+        "item": "iceandfire:dragonbone"
+      },
+      "H": {
+        "item": "spartanfire:witherbone_handle"
+      },
+      "S": {
+        "tag": "forge:rods/wooden"
+      }
+    },
+    "result": {
+      "item": "spartanfire:battleaxe_dragonbone"
+    }
+}

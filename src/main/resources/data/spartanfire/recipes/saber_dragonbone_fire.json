@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "iceandfire:fire_dragon_blood"
+        },
+        {
+            "item": "spartanfire:saber_dragonbone"
+        }
+    ],
+    "result": {
+        "item": "spartanfire:saber_dragonbone_fire",
+        "count": 1
+    }
+}

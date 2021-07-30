@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "IWW",
+      "W  ",
+      "W  "
+    ],
+    "key": {
+      "I": {
+        "tag": "forge:ingots/dragonsteel_ice"
+      },
+      "W": {
+        "tag": "minecraft:planks"
+      }
+    },
+    "result": {
+        "item": "spartanfire:boomerang_dragonsteel_ice"
+    }
+}

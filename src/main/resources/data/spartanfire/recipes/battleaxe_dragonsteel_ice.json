@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "ITI",
+      "ISI",
+      " H "
+    ],
+    "key": {
+      "I": {
+        "tag": "forge:ingots/dragonsteel_ice"
+      },
+      "H": {
+        "item": "spartanfire:witherbone_handle"
+      },
+      "S": {
+        "tag": "forge:rods/wooden"
+      }
+    },
+    "result": {
+        "item": "spartanfire:battleaxe_dragonsteel_ice"
+    }
+}

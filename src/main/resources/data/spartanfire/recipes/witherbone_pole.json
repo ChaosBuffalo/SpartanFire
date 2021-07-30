@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+      {
+          "tag": "forge:bones/wither"
+      },
+      {
+          "item": "spartanweaponry:pole"
+      }
+  ],
+  "result": {
+      "item": "spartanfire:witherbone_pole",
+      "count": 1
+  }
+}

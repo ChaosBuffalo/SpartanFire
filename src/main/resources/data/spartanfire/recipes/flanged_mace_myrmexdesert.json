@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " II",
+        " SI",
+        "H  "
+    ],
+    "key": {
+        "I": {
+            "item": "iceandfire:myrmex_desert_chitin"
+        },
+        "H": {
+            "item": "spartanfire:witherbone_handle"
+        },
+        "S": {
+            "tag": "forge:rods/wooden"
+        }
+    },
+    "result": {
+        "item": "spartanfire:flanged_mace_myrmexdesert"
+    }
+}

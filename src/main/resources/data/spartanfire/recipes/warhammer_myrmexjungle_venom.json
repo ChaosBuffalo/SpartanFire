@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "iceandfire:myrmex_stinger"
+        },
+        {
+            "item": "spartanfire:warhammer_myrmexjungle"
+        }
+    ],
+    "result": {
+        "item": "spartanfire:warhammer_myrmexjungle_venom",
+        "count": 1
+    }
+}

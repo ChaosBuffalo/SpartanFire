@@ -1,31 +1,33 @@
 package com.chaosbuffalo.spartanfire;
 
 
+import com.chaosbuffalo.spartanfire.init.ItemRegistrySFire;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = SpartanFire.MODID, name = SpartanFire.NAME, version = SpartanFire.VERSION,
-        dependencies="required-after:iceandfire@[1.9.1,);required-after:spartanweaponry@[beta 1.3.0,);required-after:llibrary@[1.7.19,)")
+@Mod(SpartanFire.MODID)
 public class SpartanFire
 {
     public static final String MODID = "spartanfire";
-    public static final String NAME = "Spartan Fire";
-    public static final String VERSION = "@VERSION@";
+    private static final Logger logger = LogManager.getLogger(MODID);
+    private static SpartanFire instance;
 
-    private static Logger logger;
-
-    @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
-        logger = event.getModLog();
+    public SpartanFire() {
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+        instance = this;
+        bus.addListener(instance::commonSetup);
     }
 
-    @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
 
+    @SubscribeEvent
+    public void commonSetup(FMLCommonSetupEvent event)
+    {
+        logger.info("SpartanFire: Common Setup");
     }
+
 }

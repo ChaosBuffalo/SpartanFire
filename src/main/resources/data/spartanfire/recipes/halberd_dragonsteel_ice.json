@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      " I",
+      "IP",
+      "I "
+    ],
+    "key": {
+      "I": {
+        "tag": "forge:ingots/dragonsteel_ice"
+    },
+      "P": {
+        "item": "spartanfire:witherbone_pole"
+      }
+    },
+    "result": {
+        "item": "spartanfire:halberd_dragonsteel_ice"
+    }
+}

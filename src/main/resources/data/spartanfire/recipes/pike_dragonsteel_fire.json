@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "I",
+      "P",
+      "P"
+    ],
+    "key": {
+      "I": {
+        "tag": "forge:ingots/dragonsteel_fire"
+    },
+      "P": {
+        "item": "spartanfire:witherbone_pole"
+      }
+    },
+    "result": {
+        "item": "spartanfire:pike_dragonsteel_fire"
+    }
+}

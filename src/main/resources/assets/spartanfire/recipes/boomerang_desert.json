@@ -1,1 +1,0 @@
-{"pattern": ["iww", "w  ", "w  "], "conditions": [], "type": "minecraft:crafting_shaped", "result": {"item": "spartanfire:boomerang_desert"}, "key": {"i": {"item": "iceandfire:myrmex_desert_chitin", "data": 0}, "w": {"ore": "plankWood", "type": "forge:ore_dict"}}}
