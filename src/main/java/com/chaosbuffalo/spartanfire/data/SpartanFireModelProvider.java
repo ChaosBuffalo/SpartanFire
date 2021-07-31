@@ -38,7 +38,7 @@ public class SpartanFireModelProvider extends ItemModelProvider {
         meleeWeaponType.add("saber");
         meleeWeaponType.add("rapier");
         meleeWeaponType.add("greatsword");
-        meleeWeaponType.add("battlehammer");
+        meleeWeaponType.add("hammer");
         meleeWeaponType.add("warhammer");
         meleeWeaponType.add("spear");
         meleeWeaponType.add("halberd");
@@ -117,16 +117,5 @@ public class SpartanFireModelProvider extends ItemModelProvider {
         getBuilder(path + "_pulling_2")
                 .parent(getExistingFile(modLoc("spartanweaponry:item/" + weapon + "_wood_pulling_0")))
                 .texture("0", modLoc(path + "_pulling_2"));
-        }
     }
-    
-    
-
-
-    //private void makeWeaponModel(WeaponMaterial material) {
-    //    String path = String.format("item/dagger_%s", material.getTagName().getPath());
-    //    getBuilder(path)
-    //            .parent(getExistingFile(modLoc("spartanweaponry:item/dagger_wood")))
-    //            .texture("0", modLoc(path));
-
-    //}
+}

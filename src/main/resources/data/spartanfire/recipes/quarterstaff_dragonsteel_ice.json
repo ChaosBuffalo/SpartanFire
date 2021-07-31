@@ -1,9 +1,9 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
+      " P ",
       " I ",
-      " I ",
-      "IP "
+      "   "
     ],
     "key": {
       "I": {
@@ -14,6 +14,6 @@
       }
     },
     "result": {
-        "item": "spartanfire:glaive_dragonsteel_ice"
+        "item": "spartanfire:quarterquarterstaff_dragonsteel_ice"
     }
 }

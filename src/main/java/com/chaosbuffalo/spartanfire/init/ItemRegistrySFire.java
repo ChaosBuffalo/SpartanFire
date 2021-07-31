@@ -19,12 +19,12 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-
 import java.util.*;
 
 /**
  * Created by Jacob on 7/20/2018.
- */@Mod.EventBusSubscriber
+ */
+@Mod.EventBusSubscriber
 public class ItemRegistrySFire {
     public static final Set<WeaponMaterial> MATERIALS_TO_REGISTER = new LinkedHashSet<>();
 
@@ -80,7 +80,7 @@ public class ItemRegistrySFire {
                         IafItemRegistry.MYRMEX_CHITIN_TOOL_MATERIAL,
                         9867904,
                         14999238,
-                        "myrmexjungle",
+                        "myrmex_jungle_chitin",
                         new MyrmexSwordProperty(MYRMEXJUNGLE, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(
                 Utils.spartanMatFromToolMat(
@@ -88,7 +88,7 @@ public class ItemRegistrySFire {
                         IafItemRegistry.MYRMEX_CHITIN_TOOL_MATERIAL,
                         9867904,
                         14999238,
-                        "myrmexdesert",
+                        "myrmex_desert_chitin",
                         new MyrmexSwordProperty(MYRMEXDESERT, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(
                 Utils.spartanMatFromToolMat(
@@ -96,7 +96,7 @@ public class ItemRegistrySFire {
                         IafItemRegistry.MYRMEX_CHITIN_TOOL_MATERIAL,
                         9867904,
                         14999238,
-                        "myrmexjungle",
+                        "myrmex_jungle_chitin",
                         new MyrmexSwordProperty(MYRMEXJUNGLE, SpartanFire.MODID),
                         new MyrmexPoisonSwordProperty(MYRMEXJUNGLE_VENOM, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(
@@ -105,7 +105,7 @@ public class ItemRegistrySFire {
                         IafItemRegistry.MYRMEX_CHITIN_TOOL_MATERIAL,
                         9867904,
                         14999238,
-                        "myrmexdesert",
+                        "myrmex_desert_chitin",
                         new MyrmexSwordProperty(MYRMEXDESERT, SpartanFire.MODID),
                         new MyrmexPoisonSwordProperty(MYRMEXDESERT_VENOM, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(
@@ -114,7 +114,7 @@ public class ItemRegistrySFire {
                         IafItemRegistry.DRAGONSTEEL_ICE_TOOL_MATERIAL,
                         9867904,
                         14999238,
-                        "dragonsteel_ice",
+                        "dragonsteel_ice_ingot",
                         new IceDragonsteelWeaponProperty(DRAGONSTEEL_ICE, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(
                 Utils.spartanMatFromToolMat(
@@ -122,7 +122,7 @@ public class ItemRegistrySFire {
                         IafItemRegistry.DRAGONSTEEL_FIRE_TOOL_MATERIAL,
                         9867904,
                         14999238,
-                        "dragonsteel fire",
+                        "dragonsteel_fire_ingot",
                         new FireDragonsteelWeaponProperty(DRAGONSTEEL_FIRE, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(
                 Utils.spartanMatFromToolMat(
@@ -130,13 +130,12 @@ public class ItemRegistrySFire {
                         IafItemRegistry.DRAGONSTEEL_LIGHTNING_TOOL_MATERIAL,
                         9867904,
                         14999238,
-                        "dragonsteel_lightning",
+                        "dragonsteel_lightning_ingot",
                         new LightningDragonsteelWeaponProperty(DRAGONSTEEL_LIGHTNING, SpartanFire.MODID)));
     }
 
-
     @SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> ev) {
+    public static void registerItems (RegistryEvent.Register < Item > ev) {
         Set<Item> item_set = new LinkedHashSet<>();
         Item witherboneHandle = new SFItem(new ResourceLocation(SpartanFire.MODID, "witherbone_handle"),
                 IceAndFire.TAB_ITEMS);
@@ -144,106 +143,106 @@ public class ItemRegistrySFire {
                 IceAndFire.TAB_ITEMS);
         ALL_ITEMS.add(witherboneHandle);
         ALL_ITEMS.add(witherbonePole);
-        for (WeaponMaterial mat : MATERIALS_TO_REGISTER){
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.katanas)){
+        for (WeaponMaterial mat : MATERIALS_TO_REGISTER) {
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.katanas)) {
                 Item katana = SpartanWeaponryAPI.createKatana(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(katana);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.greatswords)){
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.greatswords)) {
                 Item greatsword = SpartanWeaponryAPI.createGreatsword(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(greatsword);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.longswords)){
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.longswords)) {
                 Item longsword = SpartanWeaponryAPI.createLongsword(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(longsword);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.sabers)){
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.sabers)) {
                 Item saber = SpartanWeaponryAPI.createSaber(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(saber);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.rapiers)){
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.rapiers)) {
                 Item rapier = SpartanWeaponryAPI.createRapier(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(rapier);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.daggers)) {
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.daggers)) {
                 Item dagger = SpartanWeaponryAPI.createDagger(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(dagger);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.spears)) {
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.spears)) {
                 Item spear = SpartanWeaponryAPI.createSpear(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(spear);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.pikes)) {
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.pikes)) {
                 Item pike = SpartanWeaponryAPI.createPike(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(pike);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.lances)) {
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.lances)) {
                 Item lance = SpartanWeaponryAPI.createLance(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(lance);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.halberds)) {
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.halberds)) {
                 Item halberd = SpartanWeaponryAPI.createHalberd(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(halberd);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.warhammers)) {
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.warhammers)) {
                 Item warhammer = SpartanWeaponryAPI.createWarhammer(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(warhammer);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.battleHammers)) {
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.battleHammers)) {
                 Item hammer = SpartanWeaponryAPI.createBattleHammer(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(hammer);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.tomahawks)) {
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.tomahawks)) {
                 Item throwing_axe = SpartanWeaponryAPI.createTomahawk(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(throwing_axe);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.throwingKnives)) {
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.throwingKnives)) {
                 Item throwing_knife = SpartanWeaponryAPI.createThrowingKnife(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(throwing_knife);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.longbows)) {
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.longbows)) {
                 Item longbow = SpartanWeaponryAPI.createLongbow(
                         mat,
                         IceAndFire.TAB_ITEMS
@@ -251,7 +250,7 @@ public class ItemRegistrySFire {
 
                 item_set.add(longbow);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.heavyCrossbows)) {
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.heavyCrossbows)) {
                 Item crossbow = SpartanWeaponryAPI.createHeavyCrossbow(
                         mat,
                         IceAndFire.TAB_ITEMS
@@ -259,42 +258,42 @@ public class ItemRegistrySFire {
 
                 item_set.add(crossbow);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.javelins)) {
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.javelins)) {
                 Item javelin = SpartanWeaponryAPI.createJavelin(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(javelin);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.battleaxes)) {
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.battleaxes)) {
                 Item battleaxe = SpartanWeaponryAPI.createBattleaxe(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(battleaxe);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.boomerangs)) {
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.boomerangs)) {
                 Item boomerang = SpartanWeaponryAPI.createBoomerang(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(boomerang);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.flangedMaces)) {
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.flangedMaces)) {
                 Item mace = SpartanWeaponryAPI.createFlangedMace(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(mace);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.quarterstaves)){
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.quarterstaves)) {
                 Item quarterstaff = SpartanWeaponryAPI.createQuarterstaff(
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
                 item_set.add(quarterstaff);
             }
-            if (Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.glaives)){
+            if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.glaives)) {
                 Item glaive = SpartanWeaponryAPI.createGlaive(
                         mat,
                         IceAndFire.TAB_ITEMS
@@ -302,9 +301,7 @@ public class ItemRegistrySFire {
                 item_set.add(glaive);
             }
         }
-        for (Item it : item_set){
-            ev.getRegistry().register(it);
-        }
+        item_set.forEach(ev.getRegistry()::register);
         ALL_ITEMS.forEach(ev.getRegistry()::register);
     }
 

@@ -77,7 +77,7 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'examplemod', '--all', '--output', '--existing', file('src/generated/resources/')
 
             mods {
                 examplemod {
@@ -97,11 +97,9 @@ dependencies {
     // You may put jars on which you depend on in ./libs or you may define them like so..
     // compile "some.group:artifact:version:classifier"
     // compile "some.group:artifact:version"
-    compileOnly "curse.maven:ice-and-fire-dragons:3361256"
+    compileOnly fg.deobf("curse.maven:ice-and-fire-dragons:3361256")
     compileOnly fg.deobf("curse.maven:spartan-weaponry:3291850")
-    compileOnly "curse.maven:citadel:3390028"
-    // compile files("D:\\Tenzin\\Downloads\\GameStages-1.15.2-5.0.2-deobf.jar")
-    // compile files("D:\\Tenzin\\Downloads\\Bookshelf-1.15.2-5.2.5-deobf.jar")
+    compileOnly fg.deobf("curse.maven:citadel:3390028")
     // Real examples
     // compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
     // compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env

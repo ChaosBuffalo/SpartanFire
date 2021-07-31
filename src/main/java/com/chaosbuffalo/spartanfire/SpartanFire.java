@@ -1,7 +1,7 @@
 package com.chaosbuffalo.spartanfire;
 
 
-import com.chaosbuffalo.spartanfire.init.ItemRegistrySFire;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -20,6 +20,7 @@ public class SpartanFire
     public SpartanFire() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         instance = this;
+        MinecraftForge.EVENT_BUS.register(instance);
         bus.addListener(instance::commonSetup);
     }
 

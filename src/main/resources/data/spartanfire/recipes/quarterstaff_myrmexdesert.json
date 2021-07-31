@@ -1,19 +1,19 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
+      " P ",
       " I ",
-      " I ",
-      "IP "
+      "   "
     ],
     "key": {
       "I": {
-        "tag": "forge:ingots/dragonsteel_ice"
+        "item": "iceandfire:myrmex_desert_chitin"
     },
       "P": {
         "item": "spartanfire:witherbone_pole"
       }
     },
     "result": {
-        "item": "spartanfire:glaive_dragonsteel_ice"
+        "item": "spartanfire:quarterquarterstaff_myrmexdesert"
     }
 }

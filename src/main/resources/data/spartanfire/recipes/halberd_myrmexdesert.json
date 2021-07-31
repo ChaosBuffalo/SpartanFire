@@ -9,11 +9,11 @@
       "I": {
         "item": "iceandfire:myrmex_desert_chitin"
     },
-      "H": {
+      "P": {
         "item": "spartanfire:witherbone_pole"
       }
     },
     "result": {
-        "item": "spartanfire:myrmexdesert_dragonbone"
+        "item": "spartanfire:halberd_myrmexdesert"
     }
 }

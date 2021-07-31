@@ -16,9 +16,6 @@ public class LightningSwordWeaponProperty extends MeleeCallbackWeaponTrait {
     }
 
     public void onHitEntity(WeaponMaterial material, ItemStack stack, LivingEntity target, LivingEntity attacker, Entity projectile) {
-        if (target instanceof EntityIceDragon) {
-            target.hurt(DamageSource.IN_FIRE, 13.5F);
-        }
         target.addEffect(new EffectInstance(Effects.GLOWING, 300, 2));
         target.hurt(DamageSource.LIGHTNING_BOLT, 13.5F);
         target.knockback(1F, attacker.position().x - target.position().x, attacker.position().z - target.position().z);

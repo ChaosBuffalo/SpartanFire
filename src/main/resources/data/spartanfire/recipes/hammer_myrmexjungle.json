@@ -2,21 +2,18 @@
     "type": "minecraft:crafting_shaped",
     "pattern": [
       "III",
-      "ISI",
+      "III",
       " H "
     ],
     "key": {
       "I": {
-        "item": "iceandfire:dragonbone"
+        "item": "iceandfire:myrmex_jungle_chitin"
       },
       "H": {
         "item": "spartanfire:witherbone_handle"
-      },
-      "S": {
-        "tag": "forge:rods/wooden"
       }
     },
     "result": {
-      "item": "spartanfire:battleaxe_dragonbone"
+      "item": "spartanfire:hammer_myrmexjungle"
     }
 }

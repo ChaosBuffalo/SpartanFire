@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shaped",
     "pattern": [
       "III",
-      "ISI",
+      "III",
       " H "
     ],
     "key": {
@@ -11,12 +11,9 @@
       },
       "H": {
         "item": "spartanfire:witherbone_handle"
-      },
-      "S": {
-        "tag": "forge:rods/wooden"
       }
     },
     "result": {
-      "item": "spartanfire:battleaxe_dragonbone"
+      "item": "spartanfire:hammer_dragonbone"
     }
 }
