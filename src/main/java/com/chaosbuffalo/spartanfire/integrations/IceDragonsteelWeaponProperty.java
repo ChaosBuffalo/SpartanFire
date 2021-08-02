@@ -19,7 +19,7 @@ public class IceDragonsteelWeaponProperty extends MeleeCallbackWeaponTrait {
     public void onHitEntity(WeaponMaterial material, ItemStack stack, LivingEntity target, LivingEntity attacker, Entity projectile) {
         FrozenEntityProperties frozenProps = EntityPropertiesHandler.INSTANCE.getProperties(target, FrozenEntityProperties.class);
         frozenProps.setFrozenFor(300);
-        target.addEffect(new EffectInstance(Effects.MOVEMENT_SLOWDOWN, 300, 2));
-        target.knockback(1F, attacker.position().x - target.position().x, attacker.position().z - target.position().z);
+        target.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 300, 2));
+        target.applyKnockback(1F, attacker.getPosX() - target.getPosX(), attacker.getPosZ() - target.getPosZ());
     }
 }

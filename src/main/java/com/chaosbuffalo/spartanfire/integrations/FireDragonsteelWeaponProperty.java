@@ -14,7 +14,7 @@ public class FireDragonsteelWeaponProperty extends MeleeCallbackWeaponTrait {
 
     public void onHitEntity(WeaponMaterial material, ItemStack stack, LivingEntity target,
                             LivingEntity attacker, Entity projectile) {
-        target.setSecondsOnFire(15);
-        target.knockback(1F, attacker.position().x - target.position().x, attacker.position().z - target.position().z);
+        target.setFire(15);
+        target.applyKnockback(1F, attacker.getPosX() - target.getPosX(), attacker.getPosZ() - target.getPosZ());
     }
 }

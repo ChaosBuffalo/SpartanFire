@@ -10,6 +10,7 @@ import com.oblivioussp.spartanweaponry.api.SpartanWeaponryAPI;
 import com.oblivioussp.spartanweaponry.api.WeaponMaterial;
 import com.oblivioussp.spartanweaponry.util.Config;
 import net.minecraft.client.renderer.model.ModelResourceLocation;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -27,7 +28,6 @@ import java.util.*;
 @Mod.EventBusSubscriber
 public class ItemRegistrySFire {
     public static final Set<WeaponMaterial> MATERIALS_TO_REGISTER = new LinkedHashSet<>();
-
     public static final String DRAGONBONE = "dragonbone";
     public static final String DRAGONBONE_FIRE = "dragonbone_fire";
     public static final String DRAGONBONE_ICE = "dragonbone_ice";

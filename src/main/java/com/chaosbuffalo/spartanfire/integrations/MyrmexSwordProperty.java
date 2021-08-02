@@ -15,7 +15,7 @@ public class MyrmexSwordProperty extends MeleeCallbackWeaponTrait {
     }
 
     public float modifyDamageDealt(WeaponMaterial material, float baseDamage, float initialDamage, DamageSource source, LivingEntity attacker, LivingEntity victim) {
-        if (victim.getMobType() != CreatureAttribute.ARTHROPOD) {
+        if (victim.getCreatureAttribute() != CreatureAttribute.ARTHROPOD) {
             return baseDamage + 4;
         }
         if (victim instanceof EntityDeathWorm) {

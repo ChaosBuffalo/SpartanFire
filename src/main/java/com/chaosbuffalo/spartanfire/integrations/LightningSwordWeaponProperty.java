@@ -16,8 +16,8 @@ public class LightningSwordWeaponProperty extends MeleeCallbackWeaponTrait {
     }
 
     public void onHitEntity(WeaponMaterial material, ItemStack stack, LivingEntity target, LivingEntity attacker, Entity projectile) {
-        target.addEffect(new EffectInstance(Effects.GLOWING, 300, 2));
-        target.hurt(DamageSource.LIGHTNING_BOLT, 13.5F);
-        target.knockback(1F, attacker.position().x - target.position().x, attacker.position().z - target.position().z);
+        target.addPotionEffect(new EffectInstance(Effects.GLOWING, 300, 2));
+        target.attackEntityFrom(DamageSource.LIGHTNING_BOLT, 13.5F);
+        target.applyKnockback(1F, attacker.getPosX() - target.getPosX(), attacker.getPosZ() - target.getPosZ());
     }
 }

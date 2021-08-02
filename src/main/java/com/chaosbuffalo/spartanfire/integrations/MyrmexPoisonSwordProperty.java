@@ -14,7 +14,7 @@ public class MyrmexPoisonSwordProperty extends MeleeCallbackWeaponTrait {
     }
 
     public void onHitEntity(WeaponMaterial material, ItemStack stack, LivingEntity target, LivingEntity attacker, Entity projectile) {
-        target.addEffect(new EffectInstance(Effects.POISON, 200, 2));
+        target.addPotionEffect(new EffectInstance(Effects.POISON, 200, 2));
     }
 }
 

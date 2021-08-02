@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 public class SFItem extends Item {
 
     public SFItem(ResourceLocation registryName, ItemGroup tab){
-        super(new Item.Properties().tab(tab));
+        super(new Item.Properties().group(tab));
         this.setRegistryName(registryName);
     }
 }

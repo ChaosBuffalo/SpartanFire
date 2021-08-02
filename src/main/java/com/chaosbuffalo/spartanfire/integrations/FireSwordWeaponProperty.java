@@ -15,9 +15,9 @@ public class FireSwordWeaponProperty extends MeleeCallbackWeaponTrait {
 
     public void onHitEntity(WeaponMaterial material, ItemStack stack, LivingEntity target, LivingEntity attacker, Entity projectile) {
         if (target instanceof EntityIceDragon) {
-            target.hurt(DamageSource.IN_FIRE, 13.5F);
+            target.attackEntityFrom(DamageSource.IN_FIRE, 13.5F);
         }
-        target.setSecondsOnFire(5);
-        target.knockback(1F, attacker.position().x - target.position().x, attacker.position().z - target.position().z);
+        target.setFire(5);
+        target.applyKnockback(1F, attacker.getPosX() - target.getPosX(), attacker.getPosZ() - target.getPosZ());
     }
 }

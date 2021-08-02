@@ -18,11 +18,11 @@ public class Utils {
                 SpartanFire.MODID,
                 color1,
                 color2,
-                material.getLevel(),
-                material.getUses(),
-                material.getSpeed(),
-                material.getAttackDamageBonus(),
-                material.getEnchantmentValue(),
+                material.getHarvestLevel(),
+                material.getMaxUses(),
+                material.getEfficiency(),
+                material.getAttackDamage(),
+                material.getEnchantability(),
                 new ResourceLocation(IceAndFire.MODID, matName),
                 properties
         );
@@ -35,11 +35,11 @@ public class Utils {
                 SpartanFire.MODID,
                 color1,
                 color2,
-                material.getLevel(),
-                material.getUses(),
-                material.getSpeed(),
-                material.getAttackDamageBonus(),
-                material.getEnchantmentValue(),
+                material.getHarvestLevel(),
+                material.getMaxUses(),
+                material.getEfficiency(),
+                material.getAttackDamage(),
+                material.getEnchantability(),
                 new ResourceLocation(IceAndFire.MODID, matName)
         );
     }
