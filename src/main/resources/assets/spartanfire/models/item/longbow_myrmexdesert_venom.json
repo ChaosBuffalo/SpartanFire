@@ -1,0 +1,28 @@
+{
+    "parent": "spartanweaponry:item/longbow_wood",
+    "textures": {
+        "layer0": "spartanfire:items/longbow_myrmexdesert_venom_standby"
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "pulling": 1
+            },
+            "model": "spartanfire:items/longbow_myrmexdesert_venom_pulling_0"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.65
+            },
+            "model": "spartanfire:items/longbow_myrmexdesert_venom_pulling_1"
+        },
+        {
+            "predicate": {
+                "pulling": 1,
+                "pull": 0.9
+            },
+            "model": "spartanfire:items/longbow_myrmexdesert_venom_pulling_2"
+        }
+    ]
+}

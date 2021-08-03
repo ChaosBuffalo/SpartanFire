@@ -1,0 +1,6 @@
+{
+    "parent": "spartanweaponry:item/boomerang_wood",
+    "textures": {
+        "layer0": "spartanfire:items/boomerang_myrmexdesert"
+    }
+}

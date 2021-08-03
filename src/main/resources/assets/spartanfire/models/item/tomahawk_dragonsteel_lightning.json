@@ -1,0 +1,6 @@
+{
+    "parent": "spartanweaponry:item/tomahawk_wood",
+    "textures": {
+        "layer0": "spartanfire:items/tomahawk_dragonsteel_lightning"
+    }
+}
