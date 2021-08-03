@@ -10,7 +10,6 @@ import com.oblivioussp.spartanweaponry.api.SpartanWeaponryAPI;
 import com.oblivioussp.spartanweaponry.api.WeaponMaterial;
 import com.oblivioussp.spartanweaponry.util.Config;
 import net.minecraft.client.renderer.model.ModelResourceLocation;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -18,17 +17,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.*;
 
 /**
  * Created by Jacob on 7/20/2018.
  */
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = SpartanFire.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ItemRegistrySFire {
     public static final Set<WeaponMaterial> MATERIALS_TO_REGISTER = new LinkedHashSet<>();
     public static final String DRAGONBONE = "dragonbone";
@@ -250,7 +246,6 @@ public class ItemRegistrySFire {
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
-
                 item_set.add(longbow);
             }
             if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.heavyCrossbows)) {
@@ -304,8 +299,8 @@ public class ItemRegistrySFire {
                 item_set.add(glaive);
             }
         }
-        item_set.forEach(ev.getRegistry()::register);
         ALL_ITEMS.forEach(ev.getRegistry()::register);
+        item_set.forEach(ev.getRegistry()::register);
     }
 
     @OnlyIn(Dist.CLIENT)

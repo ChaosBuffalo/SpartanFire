@@ -1,0 +1,6 @@
+{
+    "parent": "spartanfire:item/standard_item",
+    "textures": {
+        "layer0": "spartanfire:items/witherbone_handle"
+    }
+}

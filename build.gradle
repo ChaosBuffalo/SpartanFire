@@ -119,8 +119,8 @@ dependencies {
     // compile "some.group:artifact:version"
     compileOnly fg.deobf("curse.maven:ice-and-fire-dragons:3361256")
     runtimeOnly fg.deobf("curse.maven:ice-and-fire-dragons:3361256")
-    compileOnly fg.deobf("curse.maven:spartan-weaponry:3291850")
-    runtimeOnly fg.deobf("curse.maven:spartan-weaponry:3291850")
+    compileOnly "curse.maven:spartan-weaponry:3291850"
+    runtimeOnly "curse.maven:spartan-weaponry:3291850"
     compileOnly fg.deobf("curse.maven:citadel:3390028")
     runtimeOnly fg.deobf("curse.maven:citadel:3390028")
     // Real examples
