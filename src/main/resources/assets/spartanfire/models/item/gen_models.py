@@ -58,11 +58,11 @@ def gen_heavy_crossbow(mat_name, weapon_name, mod_name):
     gen_pulling(mat_name, weapon_name, mod_name, "2", "0")
     gen_firing(mat_name, weapon_name, mod_name)
     gen_loaded(mat_name, weapon_name, mod_name)
-    mat_base = mod_name + ":items/" + weapon_name + "_" + mat_name
+    mat_base = mod_name + ":item/" + weapon_name + "_" + mat_name
     gen_dict = {
         "parent": "spartanweaponry:item/" + weapon_name + "_wood",
         "textures": {
-            "layer0": mat_base + "_standby"
+            "layer0": mod_name + ":items/" + weapon_name + "_" + mat_name + "_standby"
         },
         "overrides": [
             {
@@ -109,11 +109,11 @@ def gen_longbow(mat_name, weapon_name, mod_name):
     gen_pulling(mat_name, weapon_name, mod_name, "0", "0")
     gen_pulling(mat_name, weapon_name, mod_name, "1", "1")
     gen_pulling(mat_name, weapon_name, mod_name, "2", "2")
-    mat_base = mod_name + ":items/" + weapon_name + "_" + mat_name
+    mat_base = mod_name + ":item/" + weapon_name + "_" + mat_name
     gen_dict = {
     "parent": "spartanweaponry:item/" + weapon_name + "_wood",
         "textures": {
-            "layer0": mat_base + "_standby"
+            "layer0": mod_name + ":items/" + weapon_name + "_" + mat_name + "_standby"
         },
         "overrides": [
             {

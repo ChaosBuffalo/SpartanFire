@@ -5,14 +5,14 @@ mat_names = ['dragonbone', 'myrmexdesert', 'myrmexjungle', 'dragonbone_fire', 'd
 mat_desc = {
     'dragonbone_fire':"Ignites and knocks back targets, deals extra damage to ice dragons", 
     'dragonbone_ice':"Slows and knocks back targets, deals extra damage to fire dragons", 
-    'dragonbone_lightning':"Calls down a lightning strike on the target and applies glowing", 
+    'dragonbone_lightning':"Strikes targets with lightning and applies glowing", 
     'myrmexdesert':"+4 damage against non-arthropods and deathworms", 
     'myrmexjungle':"+4 damage against non-arthropods and deathworms",
     'myrmexdesert_venom':"Poisons the target on hit", 
     'myrmexjungle_venom':"Poisons the target on hit",
     'dragonsteel_fire':"Ignites and knocks back targets", 
     'dragonsteel_ice':"Slows and knocks back targets", 
-    'dragonsteel_lightning':"Calls down a lightning strike on the target and applies glowing"
+    'dragonsteel_lightning':"Strikes targets with lightning and applies glowing"
     }
 
 weapons = [
