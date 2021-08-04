@@ -12,12 +12,12 @@ import net.minecraft.util.ResourceLocation;
 public class Utils {
 
     public static WeaponMaterial spartanMatFromToolMat(String name, CustomToolMaterial material,
-                                                       int color1, int color2, String matName, WeaponTrait... properties){
+                                                       String matName, WeaponTrait... properties){
         return new WeaponMaterial(
                 name,
                 SpartanFire.MODID,
-                color1,
-                color2,
+                9867904,
+                14999238,
                 material.getHarvestLevel(),
                 material.getMaxUses(),
                 material.getEfficiency(),
@@ -29,12 +29,12 @@ public class Utils {
     }
 
     public static WeaponMaterial spartanMatFromToolMat(String name, CustomToolMaterial material,
-                                                       int color1, int color2, String matName){
+                                                       String matName){
         return new WeaponMaterial(
                 name,
                 SpartanFire.MODID,
-                color1,
-                color2,
+                9867904,
+                14999238,
                 material.getHarvestLevel(),
                 material.getMaxUses(),
                 material.getEfficiency(),
