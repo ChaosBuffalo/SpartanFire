@@ -27,9 +27,9 @@ displayName="Spartan Fire" #mandatory
 # A URL for the "homepage" for this mod, displayed in the mod UI
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile="spartanfire.png" #optional
+logoFile="SAF-logo.png" #optional
 # A text field displayed in the mod UI
-credits="Credit goes to Kovak for the original SpartanFire which spartanfire is built from" #optional
+credits="Credit for the base-mod and assistance in updating goes entirely to Kovak" #optional
 # A text field displayed in the mod UI
 authors="XxInvictus, Kovak" #optional
 # The description text for the mod (multi line!) (#mandatory)

@@ -5,6 +5,9 @@ import com.oblivioussp.spartanweaponry.api.trait.MeleeCallbackWeaponTrait;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.ITextComponent;
+
+import java.util.List;
 
 public class FireDragonsteelWeaponProperty extends MeleeCallbackWeaponTrait {
 

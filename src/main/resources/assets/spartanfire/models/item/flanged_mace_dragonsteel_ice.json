@@ -1,0 +1,6 @@
+{
+    "parent": "spartanweaponry:item/flanged_mace_wood",
+    "textures": {
+        "layer0": "spartanfire:items/flanged_mace_dragonsteel_ice"
+    }
+}

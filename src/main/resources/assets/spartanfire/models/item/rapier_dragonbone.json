@@ -1,0 +1,6 @@
+{
+    "parent": "spartanweaponry:item/rapier_wood",
+    "textures": {
+        "layer0": "spartanfire:items/rapier_dragonbone"
+    }
+}

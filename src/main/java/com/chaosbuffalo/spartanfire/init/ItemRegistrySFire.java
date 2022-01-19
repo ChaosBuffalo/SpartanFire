@@ -10,7 +10,6 @@ import com.oblivioussp.spartanweaponry.api.SpartanWeaponryAPI;
 import com.oblivioussp.spartanweaponry.api.WeaponMaterial;
 import com.oblivioussp.spartanweaponry.util.Config;
 import net.minecraft.client.renderer.model.ModelResourceLocation;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -25,7 +24,7 @@ import java.util.*;
 /**
  * Created by Jacob on 7/20/2018.
  */
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = SpartanFire.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ItemRegistrySFire {
     public static final Set<WeaponMaterial> MATERIALS_TO_REGISTER = new LinkedHashSet<>();
     public static final String DRAGONBONE = "dragonbone";
@@ -47,55 +46,41 @@ public class ItemRegistrySFire {
                 Utils.spartanMatFromToolMat(
                         DRAGONBONE,
                         IafItemRegistry.DRAGONBONE_TOOL_MATERIAL,
-                        9867904,
-                        14999238,
                         "dragonbone"));
         MATERIALS_TO_REGISTER.add(
                 Utils.spartanMatFromToolMat(
                         DRAGONBONE_FIRE,
                         IafItemRegistry.FIRE_DRAGONBONE_TOOL_MATERIAL,
-                        9867904,
-                        14999238,
                         "dragonbone",
                         new FireSwordWeaponProperty(DRAGONBONE_FIRE, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(
                 Utils.spartanMatFromToolMat(
                         DRAGONBONE_ICE,
                         IafItemRegistry.ICE_DRAGONBONE_TOOL_MATERIAL,
-                        9867904,
-                        14999238,
                         "dragonbone",
                         new IceSwordWeaponProperty(DRAGONBONE_ICE, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(
                 Utils.spartanMatFromToolMat(
                         DRAGONBONE_LIGHTNING,
                         IafItemRegistry.LIGHTNING_DRAGONBONE_TOOL_MATERIAL,
-                        9867904,
-                        14999238,
                         "dragonbone",
                         new LightningSwordWeaponProperty(DRAGONBONE_LIGHTNING, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(
                 Utils.spartanMatFromToolMat(
                         MYRMEXJUNGLE,
                         IafItemRegistry.MYRMEX_CHITIN_TOOL_MATERIAL,
-                        9867904,
-                        14999238,
                         "myrmex_jungle_chitin",
                         new MyrmexSwordProperty(MYRMEXJUNGLE, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(
                 Utils.spartanMatFromToolMat(
                         MYRMEXDESERT,
                         IafItemRegistry.MYRMEX_CHITIN_TOOL_MATERIAL,
-                        9867904,
-                        14999238,
                         "myrmex_desert_chitin",
                         new MyrmexSwordProperty(MYRMEXDESERT, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(
                 Utils.spartanMatFromToolMat(
                         MYRMEXJUNGLE_VENOM,
                         IafItemRegistry.MYRMEX_CHITIN_TOOL_MATERIAL,
-                        9867904,
-                        14999238,
                         "myrmex_jungle_chitin",
                         new MyrmexSwordProperty(MYRMEXJUNGLE, SpartanFire.MODID),
                         new MyrmexPoisonSwordProperty(MYRMEXJUNGLE_VENOM, SpartanFire.MODID)));
@@ -103,8 +88,6 @@ public class ItemRegistrySFire {
                 Utils.spartanMatFromToolMat(
                         MYRMEXDESERT_VENOM,
                         IafItemRegistry.MYRMEX_CHITIN_TOOL_MATERIAL,
-                        9867904,
-                        14999238,
                         "myrmex_desert_chitin",
                         new MyrmexSwordProperty(MYRMEXDESERT, SpartanFire.MODID),
                         new MyrmexPoisonSwordProperty(MYRMEXDESERT_VENOM, SpartanFire.MODID)));
@@ -112,24 +95,18 @@ public class ItemRegistrySFire {
                 Utils.spartanMatFromToolMat(
                         DRAGONSTEEL_ICE,
                         IafItemRegistry.DRAGONSTEEL_ICE_TOOL_MATERIAL,
-                        9867904,
-                        14999238,
                         "dragonsteel_ice_ingot",
                         new IceDragonsteelWeaponProperty(DRAGONSTEEL_ICE, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(
                 Utils.spartanMatFromToolMat(
                         DRAGONSTEEL_FIRE,
                         IafItemRegistry.DRAGONSTEEL_FIRE_TOOL_MATERIAL,
-                        9867904,
-                        14999238,
                         "dragonsteel_fire_ingot",
                         new FireDragonsteelWeaponProperty(DRAGONSTEEL_FIRE, SpartanFire.MODID)));
         MATERIALS_TO_REGISTER.add(
                 Utils.spartanMatFromToolMat(
                         DRAGONSTEEL_LIGHTNING,
                         IafItemRegistry.DRAGONSTEEL_LIGHTNING_TOOL_MATERIAL,
-                        9867904,
-                        14999238,
                         "dragonsteel_lightning_ingot",
                         new LightningDragonsteelWeaponProperty(DRAGONSTEEL_LIGHTNING, SpartanFire.MODID)));
     }
@@ -247,7 +224,6 @@ public class ItemRegistrySFire {
                         mat,
                         IceAndFire.TAB_ITEMS
                 );
-
                 item_set.add(longbow);
             }
             if (!Config.INSTANCE.disabledRecipeTypes.contains(Config.INSTANCE.heavyCrossbows)) {
@@ -301,8 +277,8 @@ public class ItemRegistrySFire {
                 item_set.add(glaive);
             }
         }
-        item_set.forEach(ev.getRegistry()::register);
         ALL_ITEMS.forEach(ev.getRegistry()::register);
+        item_set.forEach(ev.getRegistry()::register);
     }
 
     @OnlyIn(Dist.CLIENT)

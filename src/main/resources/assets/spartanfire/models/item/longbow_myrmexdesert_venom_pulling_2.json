@@ -1,0 +1,6 @@
+{
+    "parent": "spartanweaponry:item/longbow_wood_pulling_2",
+    "textures": {
+        "layer0": "spartanfire:items/longbow_myrmexdesert_venom_pulling_2"
+    }
+}

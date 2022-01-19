@@ -1,0 +1,6 @@
+{
+    "parent": "spartanweaponry:item/throwing_knife_wood",
+    "textures": {
+        "layer0": "spartanfire:items/throwing_knife_dragonbone_ice"
+    }
+}

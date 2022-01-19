@@ -1,0 +1,6 @@
+{
+    "parent": "spartanweaponry:item/quarterstaff_wood",
+    "textures": {
+        "layer0": "spartanfire:items/quarterstaff_dragonbone"
+    }
+}

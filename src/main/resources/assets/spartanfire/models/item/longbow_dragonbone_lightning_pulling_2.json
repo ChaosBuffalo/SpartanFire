@@ -1,0 +1,6 @@
+{
+    "parent": "spartanweaponry:item/longbow_wood_pulling_2",
+    "textures": {
+        "layer0": "spartanfire:items/longbow_dragonbone_lightning_pulling_2"
+    }
+}

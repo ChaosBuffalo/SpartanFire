@@ -1,0 +1,6 @@
+{
+    "parent": "spartanweaponry:item/javelin_wood",
+    "textures": {
+        "layer0": "spartanfire:items/javelin_dragonsteel_lightning"
+    }
+}
