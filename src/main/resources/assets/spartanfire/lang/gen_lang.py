@@ -62,15 +62,17 @@ for mat in mat_names:
 for mat, desc in mat_desc.items():
     gen_dict["tooltip.spartanfire.trait." + mat] = desc
 
-gen_dict["material.spartanfire.dragonbone"] = "Dragonbone"
-gen_dict["material.spartanfire.dragonbone_fire"] = "Flamed Dragonbone"
-gen_dict["material.spartanfire.dragonbone_ice"] = "Iced Dragonbone"
-gen_dict["material.spartanfire.myrmexdesert"] = "Desert Myrmex Chitin"
-gen_dict["material.spartanfire.myrmexjungle"] = "Jungle Myrmex Chitin"
-gen_dict["material.spartanfire.myrmexdesert_venom"] = "Desert Myrmex Stinger"
-gen_dict["material.spartanfire.myrmexjungle_venom"] = "Jungle Myrmex Stinger"
-gen_dict["material.spartanfire.dragonsteel_ice"] = "Ice Dragonsteel"
-gen_dict["material.spartanfire.dragonsteel_fire"] = "Fire Dragonsteel"
+gen_dict.update({
+    "material.spartanfire.dragonbone":"Dragonbone",
+    "material.spartanfire.dragonbone_fire":"Flamed Dragonbone",
+    "material.spartanfire.dragonbone_ice":"Iced Dragonbone",
+    "material.spartanfire.myrmexdesert":"Desert Myrmex Chitin",
+    "material.spartanfire.myrmexjungle":"Jungle Myrmex Chitin",
+    "material.spartanfire.myrmexdesert_venom":"Desert Myrmex Stinger",
+    "material.spartanfire.myrmexjungle_venom":"Jungle Myrmex Stinger",
+    "material.spartanfire.dragonsteel_ice":"Ice Dragonsteel",
+    "material.spartanfire.dragonsteel_fire":"Fire Dragonsteel"
+})
 
 with open('en_us.json', 'w') as outfile:
         json.dump(gen_dict, outfile, indent=4)
